@@ -9,6 +9,22 @@ import Foundation
 import XCTest
 
 extension XCTestCase {
+
+    enum TestsMockError: Error {
+        case fileNotFound
+    }
+    
+    func getMock<T: Codable>(type: T.Type, fromJsonFile file: String) throws -> (T, Data) {
+        let bundle = Bundle(for: Self.self)
+        guard let path = bundle.path(forResource: file, ofType: "json") else {
+            throw TestsMockError.fileNotFound
+        }
+        let url = URL(fileURLWithPath: path)
+        let data = try Data(contentsOf: url)
+        let response = try JSONDecoder().decode(T.self, from: data)
+        return (response, data)
+    }
+
     func runAsyncTest(
         named testName: String = #function,
         in file: StaticString = #file,

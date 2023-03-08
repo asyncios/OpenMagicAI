@@ -23,6 +23,7 @@ let package = Package(
             dependencies: []),
         .testTarget(
             name: "OpenMagicAITests",
-            dependencies: ["OpenMagicAI"]),
+            dependencies: ["OpenMagicAI"],
+            exclude: ["Mocks/"])
     ]
 )
