@@ -11,6 +11,7 @@ import Foundation
 enum Mocks: String {
 
     case createCompletion = "CreateCompletion.json"
+    case createEdit = "CreateEdit.json"
 
     var url: URL {
         let thisSourceFile = URL(fileURLWithPath: #file)

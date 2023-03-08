@@ -22,7 +22,7 @@ final class EditsApiTests: XCTestCase {
     func testCreateEdit() throws {
         // Given
         let path = EndPoint.edits(.createEdit).url.path
-        let mock = try getCreateEditMock()
+        let mock = try Mocks.createEdit.getMock(type: OpenMagic.Edits.self)
         MockURLProtocol.mockData[path] = mock.1
         let expectation: XCTestExpectation = .init(description: "testCreateEdit")
         // Case
@@ -43,7 +43,7 @@ extension EditsApiTests {
     func testCreateEditAsync() async throws -> Void {
         // Given
         let path = EndPoint.edits(.createEdit).url.path
-        let mock = try getCreateEditMock()
+        let mock = try Mocks.createEdit.getMock(type: OpenMagic.Edits.self)
         MockURLProtocol.mockData[path] = mock.1
         // Case
         let result = try await self.sut.createEdit(instruction: "test")
