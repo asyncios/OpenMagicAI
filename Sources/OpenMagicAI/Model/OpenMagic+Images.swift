@@ -9,7 +9,7 @@ import Foundation
 
 extension OpenMagic {
 
-    public struct Images: Decodable {
+    public struct Images: Codable {
         let created: Int
         let data: [Photo]
     }
@@ -18,7 +18,7 @@ extension OpenMagic {
 
 extension OpenMagic.Images {
 
-    public struct Photo: Decodable {
+    public struct Photo: Codable {
         let url: String
     }
 
