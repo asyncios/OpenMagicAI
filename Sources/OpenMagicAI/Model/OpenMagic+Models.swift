@@ -1,6 +1,6 @@
 //
 //  OpenMagic+Models.swift
-//  Demo2OpenAI
+//  OpenMagicAI
 //
 //  Created by admin on 7/03/23.
 //

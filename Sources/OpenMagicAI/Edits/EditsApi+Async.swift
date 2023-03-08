@@ -1,6 +1,6 @@
 //
 //  EditsApi+Async.swift
-//  Demo2OpenAI
+//  OpenMagicAI
 //
 //  Created by admin on 6/03/23.
 //
