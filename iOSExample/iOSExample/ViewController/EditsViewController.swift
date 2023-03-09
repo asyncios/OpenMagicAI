@@ -1,5 +1,5 @@
 //
-//  CompletionsViewController.swift
+//  EditsViewController.swift
 //  iOSExample
 //
 //  Created by admin on 9/03/23.
@@ -8,7 +8,7 @@
 import UIKit
 import OpenMagicAI
 
-final class CompletionsViewController: ItemViewController {
+final class EditsViewController: ItemViewController {
 
     init() {
         super.init(nibName: "ItemViewController", bundle: nil)
@@ -17,26 +17,29 @@ final class CompletionsViewController: ItemViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         for item in inputTextFields {
             item.isHidden = true
         }
         inputTextFields[0].isHidden = false
-        for item in buttons {
-            item.isHidden = true
+        inputTextFields[0].placeholder = "Input"
+        inputTextFields[1].isHidden = false
+        inputTextFields[1].placeholder = "Instruction"
+        for button in buttons {
+            button.isHidden = true
         }
         buttons[0].isHidden = false
-        buttons[0].setTitle("Create Completion", for: .normal)
+        buttons[0].setTitle("Create Edit", for: .normal)
     }
-
+    
     override func firstOnTouch(_ sender: Any) {
-        guard let prompt = getFirstInputValidated() else {
+        guard let input = getFirstInputValidated(), let instruction = getSecondInputValidated() else {
             return
         }
         showLoadingView()
-        openMagicAI.completions.createCompletion(prompt: prompt) { [weak self] result in
+        openMagicAI.edits.createEdit(input: input, instruction: instruction) { [weak self] result in
             DispatchQueue.main.async {
                 self?.hideLoadingView()
             }

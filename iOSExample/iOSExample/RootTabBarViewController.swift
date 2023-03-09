@@ -21,8 +21,8 @@ class RootTabBarViewController: UITabBarController {
         return viewController
     }()
 
-    lazy var editsViewController: ItemViewController = {
-        let viewController = ItemViewController()
+    lazy var editsViewController: EditsViewController = {
+        let viewController = EditsViewController()
         viewController.tabBarItem.title = "Edits"
         return viewController
     }()

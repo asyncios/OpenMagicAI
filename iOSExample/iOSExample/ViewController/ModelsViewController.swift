@@ -20,7 +20,9 @@ final class ModelsViewController: ItemViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        promptLabel.isHidden = true
+        for item in inputTextFields {
+            item.isHidden = true
+        }
         for button in buttons {
             button.isHidden = true
         }

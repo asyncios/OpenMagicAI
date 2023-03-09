@@ -11,7 +11,7 @@ import OpenMagicAI
 class ItemViewController: UIViewController, Loadable {
 
     let openMagicAI = OpenMagicAI(apiKey: "")
-    @IBOutlet weak var promptLabel: UITextField!
+    @IBOutlet var inputTextFields: [UITextField]!
     @IBOutlet var buttons: [UIButton]!
 
     override func viewDidLoad() {
@@ -24,18 +24,26 @@ class ItemViewController: UIViewController, Loadable {
     @IBAction func secondOnTouch(_ sender: Any) {
     }
 
-    func getPromptValidated() -> String? {
-        guard let prompt = promptLabel.text, !prompt.isEmpty else {
-            promptAlert()
+    func getFirstInputValidated() -> String? {
+        guard let value = inputTextFields[0].text, !value.isEmpty else {
+            inputAlert()
             return nil
         }
-        return prompt
+        return value
     }
 
-    func promptAlert() {
+    func getSecondInputValidated() -> String? {
+        guard let value = inputTextFields[1].text, !value.isEmpty else {
+            inputAlert()
+            return nil
+        }
+        return value
+    }
+
+    func inputAlert() {
         let alert = UIAlertController(
             title: "OpenMagicAI",
-            message: "No prompt",
+            message: "No Input",
             preferredStyle: .alert
         )
         alert.addAction(.init(title: "Ok", style: .default))

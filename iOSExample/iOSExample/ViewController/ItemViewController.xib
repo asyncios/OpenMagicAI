@@ -10,10 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ItemViewController" customModule="iOSExample" customModuleProvider="target">
             <connections>
-                <outlet property="promptLabel" destination="8IF-Et-h9t" id="RQ7-sn-x75"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outletCollection property="buttons" destination="I7F-qD-Zv4" collectionClass="NSMutableArray" id="jBz-R4-PmW"/>
                 <outletCollection property="buttons" destination="uaz-Px-m9S" collectionClass="NSMutableArray" id="J5h-1O-tXI"/>
+                <outletCollection property="inputTextFields" destination="8IF-Et-h9t" collectionClass="NSMutableArray" id="Ice-xU-b0d"/>
+                <outletCollection property="inputTextFields" destination="jI7-zv-NHQ" collectionClass="NSMutableArray" id="7aq-vk-4by"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -22,15 +23,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="BzS-1r-fS9">
-                    <rect key="frame" x="20" y="66.999999999999986" width="350" height="132.66666666666663"/>
+                    <rect key="frame" x="20" y="66.999999999999986" width="350" height="181.66666666666663"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Prompt" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8IF-Et-h9t">
                             <rect key="frame" x="0.0" y="0.0" width="350" height="34"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Prompt" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jI7-zv-NHQ">
+                            <rect key="frame" x="0.0" y="49" width="350" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I7F-qD-Zv4">
-                            <rect key="frame" x="0.0" y="49" width="350" height="34.333333333333343"/>
+                            <rect key="frame" x="0.0" y="98" width="350" height="34.333333333333343"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="filled" title="Button 1"/>
                             <connections>
@@ -38,7 +44,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uaz-Px-m9S">
-                            <rect key="frame" x="0.0" y="98.333333333333343" width="350" height="34.333333333333343"/>
+                            <rect key="frame" x="0.0" y="147.33333333333334" width="350" height="34.333333333333343"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="filled" title="Button 2"/>
                             <connections>

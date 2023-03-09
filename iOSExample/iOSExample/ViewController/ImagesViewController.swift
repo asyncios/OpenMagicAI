@@ -20,6 +20,10 @@ final class ImagesViewController: ItemViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        for item in inputTextFields {
+            item.isHidden = true
+        }
+        inputTextFields[0].isHidden = false
         for button in buttons {
             button.isHidden = true
         }
@@ -29,7 +33,7 @@ final class ImagesViewController: ItemViewController {
     
 
     override func firstOnTouch(_ sender: Any) {
-        guard let prompt = getPromptValidated() else {
+        guard let prompt = getFirstInputValidated() else {
             return
         }
         showLoadingView()
