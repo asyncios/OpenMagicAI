@@ -22,7 +22,7 @@ final class CompletionsApiTests: XCTestCase {
     func testCreateCompletion() async throws -> Void {
         // Given
         let path = EndPoint.completions(.createCompletion).url.path
-        let mock = try Mocks.createCompletion.getMock(type: OpenMagic.Completions.self)
+        let mock = try Mocks.createCompletion.getMock(type: Completions.self)
         MockURLProtocol.mockData[path] = mock.1
         // Case
         let expectation: XCTestExpectation = .init(description: "testCreateCompletion")
@@ -43,7 +43,7 @@ extension CompletionsApiTests {
     func testCreateCompletionAsync() async throws -> Void {
         // Given
         let path = EndPoint.completions(.createCompletion).url.path
-        let mock = try Mocks.createCompletion.getMock(type: OpenMagic.Completions.self)
+        let mock = try Mocks.createCompletion.getMock(type: Completions.self)
         MockURLProtocol.mockData[path] = mock.1
         // Case
         let result = try await self.sut.createCompletion(prompt: "test")

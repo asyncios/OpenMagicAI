@@ -7,25 +7,23 @@
 
 import Foundation
 
-extension OpenMagic {
 
-    public struct Completions: Codable {
-        public let object: String
-        public let model: String
-        public let choices: [Choice]
-    }
-
-    public struct ChatCompletions: Codable {
-        public let id: String
-        public let object: String
-        public let created: Int
-        public let choices: [Choice]
-        public let usage: Usage
-    }
-
+public struct Completions: Codable {
+    public let object: String
+    public let model: String
+    public let choices: [Choice]
 }
 
-extension OpenMagic.Completions {
+public struct ChatCompletions: Codable {
+    public let id: String
+    public let object: String
+    public let created: Int
+    public let choices: [Choice]
+    public let usage: Usage
+}
+
+
+extension Completions {
 
     public struct Choice: Codable {
         public let text: String
@@ -33,7 +31,7 @@ extension OpenMagic.Completions {
 
 }
 
-extension OpenMagic.ChatCompletions {
+extension ChatCompletions {
 
     public struct Choice: Codable {
         public let index: Int

@@ -17,7 +17,7 @@ extension EditsApi {
         n: Int? = 1,
         temperature: Int? = 1,
         topP: Int? = 1
-    ) async throws -> OpenMagic.Edits {
+    ) async throws -> Edits {
         return try await withCheckedThrowingContinuation { continuation in
             createEdit(
                 model: model,

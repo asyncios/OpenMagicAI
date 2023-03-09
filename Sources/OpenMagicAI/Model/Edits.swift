@@ -7,16 +7,14 @@
 
 import Foundation
 
-extension OpenMagic {
-    public struct Edits: Codable {
-        public let object: String
-        public let created: Int
-        public let choices: [Choice]
-        public let usage: Usage
-    }
+public struct Edits: Codable {
+    public let object: String
+    public let created: Int
+    public let choices: [Choice]
+    public let usage: Usage
 }
 
-extension OpenMagic.Edits {
+extension Edits {
 
     public struct Choice: Codable {
         public let text: String

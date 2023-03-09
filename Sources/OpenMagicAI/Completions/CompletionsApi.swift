@@ -31,7 +31,7 @@ public class CompletionsApi: ApiQueryable {
         frequencyPenalty: Int? = 0,
         bestOf: Int? = 1,
         user: String? = nil,
-        onCompletion: @escaping (Result<OpenMagic.Completions, Error>) -> Void
+        onCompletion: @escaping (Result<Completions, Error>) -> Void
     ) {
         let parameters = CreateCompletion.Parameters(
             model: model.rawValue,
@@ -66,7 +66,7 @@ public class CompletionsApi: ApiQueryable {
         frequencyPenalty: Int? = 0,
         bestOf: Int? = 1,
         user: String? = nil,
-        onCompletion: @escaping (Result<OpenMagic.ChatCompletions, Error>) -> Void
+        onCompletion: @escaping (Result<ChatCompletions, Error>) -> Void
     ) {
         let parameters = ChatCompletion.Parameters(
             model: model.rawValue,

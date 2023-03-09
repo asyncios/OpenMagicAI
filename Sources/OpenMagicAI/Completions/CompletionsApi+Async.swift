@@ -26,7 +26,7 @@ extension CompletionsApi {
         frequencyPenalty: Int? = 0,
         bestOf: Int? = 1,
         user: String? = nil
-    ) async throws -> OpenMagic.Completions {
+    ) async throws -> Completions {
         return try await withCheckedThrowingContinuation { continuation in
             createCompletion(
                 model: model,
@@ -65,7 +65,7 @@ extension CompletionsApi {
         frequencyPenalty: Int? = 0,
         bestOf: Int? = 1,
         user: String? = nil
-    ) async throws -> OpenMagic.ChatCompletions {
+    ) async throws -> ChatCompletions {
         return try await withCheckedThrowingContinuation { continuation in
             chatCompletion(
                 model: model,

@@ -10,14 +10,19 @@ import Foundation
 extension EndPoint.Images {
     var method: String? {
         switch self {
-        case .generations:
+        case .createEdit:
             return "POST"
-        case .edits:
+        case .createImageEdit:
             return nil
         }
     }
     var path: String? {
-        self.rawValue
+        switch self {
+        case .createEdit:
+            return "generations"
+        case .createImageEdit:
+            return "edits"
+        }
     }
     static var basePath: String? {
         return "images"
