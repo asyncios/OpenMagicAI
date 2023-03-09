@@ -11,14 +11,14 @@ import Foundation
 extension OpenMagic {
 
     public struct ListModels: Codable {
-        let data: [Model]
-        let object: String
+        public let data: [Model]
+        public let object: String
     }
 
     public struct Model: Codable {
-        let id: String
-        let object: String
-        let ownedBy: String
+        public let id: String
+        public let object: String
+        public let ownedBy: String
 
         enum CodingKeys: String, CodingKey {
             case id, object

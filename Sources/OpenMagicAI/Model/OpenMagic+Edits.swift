@@ -9,24 +9,24 @@ import Foundation
 
 extension OpenMagic {
     public struct Edits: Codable {
-        let object: String
-        let created: Int
-        let choices: [Choice]
-        let usage: Usage
+        public let object: String
+        public let created: Int
+        public let choices: [Choice]
+        public let usage: Usage
     }
 }
 
 extension OpenMagic.Edits {
 
     public struct Choice: Codable {
-        let text: String
-        let index: Int
+        public let text: String
+        public let index: Int
     }
 
     public struct Usage: Codable {
-        let promptTokens: Int
-        let completionTokens: Int
-        let totalTokens: Int
+        public let promptTokens: Int
+        public let completionTokens: Int
+        public let totalTokens: Int
 
         enum CodingKeys: String, CodingKey {
             case promptTokens = "prompt_tokens"

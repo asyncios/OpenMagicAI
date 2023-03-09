@@ -16,11 +16,11 @@ extension OpenMagic {
     }
 
     public struct ChatCompletions: Codable {
-        let id: String
-        let object: String
-        let created: Int
-        let choices: [Choice]
-        let usage: Usage
+        public let id: String
+        public let object: String
+        public let created: Int
+        public let choices: [Choice]
+        public let usage: Usage
     }
 
 }
@@ -36,9 +36,9 @@ extension OpenMagic.Completions {
 extension OpenMagic.ChatCompletions {
 
     public struct Choice: Codable {
-        let index: Int
-        let message: Message
-        let finishReason: String
+        public let index: Int
+        public let message: Message
+        public let finishReason: String
         enum CodingKeys: String, CodingKey {
             case index, message
             case finishReason = "finish_reason"
@@ -46,14 +46,14 @@ extension OpenMagic.ChatCompletions {
     }
 
     public struct Message: Codable {
-        let role: String
-        let content: String
+        public let role: String
+        public let content: String
     }
 
     public struct Usage: Codable {
-        let promptTokens: Int
-        let completionTokens: Int
-        let totalTokens: Int
+        public let promptTokens: Int
+        public let completionTokens: Int
+        public let totalTokens: Int
 
         enum CodingKeys: String, CodingKey {
             case promptTokens = "prompt_tokens"
