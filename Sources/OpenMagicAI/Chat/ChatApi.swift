@@ -1,13 +1,14 @@
 //
-//  CompletionsApi.swift
-//  OpenMagicAI
+//  ChatApi.swift
+//  
 //
-//  Created by admin on 6/03/23.
+//  Created by admin on 9/03/23.
 //
 
 import Foundation
 
-public final class CompletionsApi: ApiQueryable {
+public final class ChatApi: ApiQueryable {
+
     private let apiKey: String
     private let urlSession: URLSession
     init(apiKey: String, urlSession: URLSession = .shared) {
@@ -15,42 +16,36 @@ public final class CompletionsApi: ApiQueryable {
         self.urlSession = urlSession
     }
 
-    public func createCompletion(
-        model: OpenMagicModel = .chatGPT35(.textDavinci003),
-        prompt: String,
-        suffix: String? = nil,
-        maxTokens: Int? = 16,
+
+    public func chatCompletion(
+        model: ChatCompletion.Model = .gpt35Turbo,
+        messages: [ChatCompletion.Message],
         temperature: Int? = 1,
         topP: Int? = 1,
         n: Int? = 1,
         stream: Bool? = false,
-        logprobs: Int? = nil,
-        echo: Bool? = false,
+        maxTokens: Int? = 4096,
         stop: [String]? = nil,
         presencePenalty: Int? = 0,
         frequencyPenalty: Int? = 0,
         bestOf: Int? = 1,
         user: String? = nil,
-        onCompletion: @escaping (Result<Completions, Error>) -> Void
+        onCompletion: @escaping (Result<ChatCompletions, Error>) -> Void
     ) {
-        let parameters = CreateCompletion.Parameters(
+        let parameters = ChatCompletion.Parameters(
             model: model.rawValue,
-            prompt: prompt,
-            suffix: suffix,
-            maxTokens: maxTokens,
+            messages: messages,
             temperature: temperature,
             topP: topP,
             n: n,
             stream: stream,
-            logprobs: logprobs,
-            echo: echo,
+            maxTokens: maxTokens,
             stop: stop,
             presencePenalty: presencePenalty,
             frequencyPenalty: frequencyPenalty,
             bestOf: bestOf,
             user: user
         )
-        openAiDataTask(urlSession: urlSession, endPoint: .completions(.createCompletion), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)
+        openAiDataTask(urlSession: urlSession, endPoint: .completions(.chatCompletion), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)
     }
-
 }
