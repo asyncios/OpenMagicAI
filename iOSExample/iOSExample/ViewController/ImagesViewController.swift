@@ -40,14 +40,12 @@ final class ImagesViewController: ItemViewController {
         openMagicAI.images.generations(prompt: prompt) { [weak self] result in
             DispatchQueue.main.async {
                 self?.hideLoadingView()
-                
-            }
-            switch result {
-            case .success(let value):
-                let viewController = ImageItemViewController()
-//                viewController.imageUrlString = value.
-            case .failure(_):
-                break
+                if case .success(let value) = result,
+                    let imageUrlString = value.data.first?.url {
+                    let viewController = ImageItemViewController()
+                    viewController.imageUrlString = imageUrlString
+                    self?.present(viewController, animated: true)
+                }
             }
             debugPrint(result)
         }
