@@ -7,16 +7,12 @@
 
 import Foundation
 
-extension OpenMagic {
-
-    public struct Images: Codable {
-        public let created: Int
-        public let data: [Photo]
-    }
-
+public struct Images: Codable {
+    public let created: Int
+    public let data: [Photo]
 }
 
-extension OpenMagic.Images {
+extension Images {
 
     public struct Photo: Codable {
         public let url: String

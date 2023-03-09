@@ -22,7 +22,7 @@ final class ModelsApiTests: XCTestCase {
     func testListModels() throws {
         // Given
         let path = EndPoint.models(.listModels).url.path
-        let mock = try Mocks.listModels.getMock(type: OpenMagic.ListModels.self)
+        let mock = try Mocks.listModels.getMock(type: ListModels.self)
         MockURLProtocol.mockData[path] = mock.1
         let expecation: XCTestExpectation = .init(description: "testGenerations")
         // Case
@@ -42,7 +42,7 @@ extension ModelsApiTests {
     func testListModelsAsync() async throws -> Void {
         // Given
         let path = EndPoint.models(.listModels).url.path
-        let mock = try Mocks.listModels.getMock(type: OpenMagic.ListModels.self)
+        let mock = try Mocks.listModels.getMock(type: ListModels.self)
         MockURLProtocol.mockData[path] = mock.1
         // Case
         let result = try await sut.listModels()

@@ -22,7 +22,7 @@ public final class EditsApi: ApiQueryable {
         n: Int? = 1,
         temperature: Int? = 1,
         topP: Int? = 1,
-        onCompletion: @escaping (Result<OpenMagic.Edits, Error>) -> Void
+        onCompletion: @escaping (Result<Edits, Error>) -> Void
     ) {
         let parameters = CreateEdit.Parameters(
             model: model.rawValue,

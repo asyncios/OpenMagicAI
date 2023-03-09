@@ -14,7 +14,7 @@ extension ImagesApi {
         prompt: String,
         n: Int = 1,
         size: ImageSize = .init(width: 256, height: 256)
-    ) async throws -> OpenMagic.Images {
+    ) async throws -> Images {
         return try await withCheckedThrowingContinuation { continuation in
             createImage(prompt: prompt, n: n, size: size) { result in
                 continuation.resume(with: result)

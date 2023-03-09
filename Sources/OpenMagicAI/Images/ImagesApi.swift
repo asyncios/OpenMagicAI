@@ -20,7 +20,7 @@ public final class ImagesApi: ApiQueryable {
         prompt: String,
         n: Int = 1,
         size: ImageSize = .init(width: 256, height: 256),
-        onCompletion: @escaping (Result<OpenMagic.Images, Error>) -> Void
+        onCompletion: @escaping (Result<Images, Error>) -> Void
     ) {
         let parameters = Generations(prompt: prompt, n: n, size: size)
         openAiDataTask(urlSession: urlSession, endPoint: .images(.createEdit), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)

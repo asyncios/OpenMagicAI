@@ -17,7 +17,7 @@ public final class ModelsApi: ApiQueryable {
     }
 
     public func listModels(
-        onCompletion: @escaping (Result<OpenMagic.ListModels, Error>) -> Void
+        onCompletion: @escaping (Result<ListModels, Error>) -> Void
     ) {
         openAiDataTask(urlSession: urlSession, endPoint: .models(.listModels), apiKey: apiKey, onCompletion: onCompletion)
     }
