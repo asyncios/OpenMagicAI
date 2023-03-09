@@ -11,18 +11,17 @@ extension ChatApi {
 
     @available(swift 5.5)
     @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
-    func chatCompletion(
+    public func chatCompletion(
         model: ChatCompletion.Model = .gpt35Turbo,
         messages: [ChatCompletion.Message],
         temperature: Int? = 1,
         topP: Int? = 1,
         n: Int? = 1,
         stream: Bool? = false,
-        maxTokens: Int? = 4096,
         stop: [String]? = nil,
+        maxTokens: Int? = 4096,
         presencePenalty: Int? = 0,
         frequencyPenalty: Int? = 0,
-        bestOf: Int? = 1,
         user: String? = nil
     ) async throws -> ChatCompletions {
         return try await withCheckedThrowingContinuation { continuation in
@@ -33,11 +32,10 @@ extension ChatApi {
                 topP: topP,
                 n: n,
                 stream: stream,
-                maxTokens: maxTokens,
                 stop: stop,
+                maxTokens: maxTokens,
                 presencePenalty: presencePenalty,
                 frequencyPenalty: frequencyPenalty,
-                bestOf: bestOf,
                 user: user
             ) { result in
                 continuation.resume(with: result)

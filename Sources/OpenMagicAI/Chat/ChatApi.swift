@@ -24,11 +24,10 @@ public final class ChatApi: ApiQueryable {
         topP: Int? = 1,
         n: Int? = 1,
         stream: Bool? = false,
-        maxTokens: Int? = 4096,
         stop: [String]? = nil,
+        maxTokens: Int? = 4096,
         presencePenalty: Int? = 0,
         frequencyPenalty: Int? = 0,
-        bestOf: Int? = 1,
         user: String? = nil,
         onCompletion: @escaping (Result<ChatCompletions, Error>) -> Void
     ) {
@@ -39,13 +38,12 @@ public final class ChatApi: ApiQueryable {
             topP: topP,
             n: n,
             stream: stream,
-            maxTokens: maxTokens,
             stop: stop,
+            maxTokens: maxTokens,
             presencePenalty: presencePenalty,
             frequencyPenalty: frequencyPenalty,
-            bestOf: bestOf,
             user: user
         )
-        openAiDataTask(urlSession: urlSession, endPoint: .completions(.chatCompletion), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)
+        openAiDataTask(urlSession: urlSession, endPoint: .chat(.chatCompletion), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)
     }
 }
