@@ -37,7 +37,7 @@ final class ImagesViewController: ItemViewController {
             return
         }
         showLoadingView()
-        openMagicAI.images.generations(prompt: prompt) { [weak self] result in
+        openMagicAI.images.createImage(prompt: prompt) { [weak self] result in
             DispatchQueue.main.async {
                 self?.hideLoadingView()
                 if case .success(let value) = result,
