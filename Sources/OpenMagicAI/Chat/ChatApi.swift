@@ -25,7 +25,7 @@ public final class ChatApi: ApiQueryable {
         n: Int? = 1,
         stream: Bool? = false,
         stop: [String]? = nil,
-        maxTokens: Int? = 4096,
+        maxTokens: Int? = 2000,
         presencePenalty: Int? = 0,
         frequencyPenalty: Int? = 0,
         user: String? = nil,
