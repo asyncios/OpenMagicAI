@@ -21,12 +21,12 @@ final class ImagesApiTests: XCTestCase {
     
     func testGenerations() throws {
         // Given
-        let path = EndPoint.images(.generations).url.path
+        let path = EndPoint.images(.createEdit).url.path
         let mock = try Mocks.createImage.getMock(type: OpenMagic.Images.self)
         MockURLProtocol.mockData[path] = mock.1
         let expecation: XCTestExpectation = .init(description: "testGenerations")
         // Case
-        sut.generations(prompt: "test") { result in
+        sut.createImage(prompt: "test") { result in
             if case .success(let success) = result,
                success.created == mock.0.created {
                 expecation.fulfill()
@@ -43,11 +43,11 @@ final class ImagesApiTests: XCTestCase {
 extension ImagesApiTests {
     func testGenerationsAsync() async throws -> Void {
         // Given
-        let path = EndPoint.images(.generations).url.path
+        let path = EndPoint.images(.createEdit).url.path
         let mock = try Mocks.createImage.getMock(type: OpenMagic.Images.self)
         MockURLProtocol.mockData[path] = mock.1
         // Case
-        let result = try await sut.generations(prompt: "test")
+        let result = try await sut.createImage(prompt: "test")
         // When
         XCTAssertEqual(mock.0.created, result.created)
     }

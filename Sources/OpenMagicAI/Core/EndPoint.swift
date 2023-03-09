@@ -48,8 +48,8 @@ enum EndPoint: EndpointQueryable {
 extension EndPoint {
 
     enum Images: String, EndpointPathQueryable {
-        case generations
-        case edits
+        case createEdit
+        case createImageEdit
     }
 
     enum Completions: EndpointPathQueryable {
