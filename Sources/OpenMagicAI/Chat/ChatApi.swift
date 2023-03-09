@@ -44,6 +44,6 @@ public final class ChatApi: ApiQueryable {
             frequencyPenalty: frequencyPenalty,
             user: user
         )
-        openAiDataTask(urlSession: urlSession, endPoint: .completions(.chatCompletion), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)
+        openAiDataTask(urlSession: urlSession, endPoint: .chat(.chatCompletion), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)
     }
 }

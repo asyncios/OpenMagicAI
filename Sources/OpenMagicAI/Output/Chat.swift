@@ -21,6 +21,7 @@ extension ChatCompletions {
         public let index: Int
         public let message: Message
         public let finishReason: String
+
         enum CodingKeys: String, CodingKey {
             case index, message
             case finishReason = "finish_reason"
@@ -43,5 +44,4 @@ extension ChatCompletions {
             case totalTokens = "total_tokens"
         }
     }
-
 }

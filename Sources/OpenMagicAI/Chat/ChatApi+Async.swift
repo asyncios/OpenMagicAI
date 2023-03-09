@@ -11,7 +11,7 @@ extension ChatApi {
 
     @available(swift 5.5)
     @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
-    func chatCompletion(
+    public func chatCompletion(
         model: ChatCompletion.Model = .gpt35Turbo,
         messages: [ChatCompletion.Message],
         temperature: Int? = 1,

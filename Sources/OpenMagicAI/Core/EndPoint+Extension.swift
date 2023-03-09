@@ -34,16 +34,12 @@ extension EndPoint.Completions {
         switch self {
         case .createCompletion:
             return "POST"
-        case .chatCompletion:
-            return "POST"
         }
     }
     var path: String? {
         switch self {
         case .createCompletion:
             return "completions"
-        case .chatCompletion:
-            return "chat/completions"
         }
     }
     static var basePath: String? {
@@ -84,5 +80,23 @@ extension EndPoint.Models {
     }
     static var basePath: String? {
         return "models"
+    }
+}
+
+extension EndPoint.Chat {
+    var path: String? {
+        switch self {
+        case .chatCompletion:
+            return "chat/completions"
+        }
+    }
+    var method: String? {
+        switch self {
+        case .chatCompletion:
+            return "POST"
+        }
+    }
+    static var basePath: String? {
+        return nil
     }
 }
