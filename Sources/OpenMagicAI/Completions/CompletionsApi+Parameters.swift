@@ -51,12 +51,16 @@ extension CompletionsApi {
             case gpt35Turbo0301 = "gpt-3.5-turbo-0301"
         }
         public struct Message: Codable {
-            let role: Role
-            let content: String
-            enum Role: String, Codable {
+            public let role: Role
+            public let content: String
+            public enum Role: String, Codable {
                 case system
                 case user
                 case assistant
+            }
+            public init(role: Role, content: String) {
+                self.role = role
+                self.content = content
             }
         }
         struct Parameters: Encodable {
