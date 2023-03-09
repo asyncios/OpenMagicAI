@@ -8,7 +8,7 @@
 import UIKit
 import OpenMagicAI
 
-class ItemViewController: UIViewController {
+class ItemViewController: UIViewController, Loadable {
 
     let openMagicAI = OpenMagicAI(apiKey: "")
     @IBOutlet weak var promptLabel: UITextField!

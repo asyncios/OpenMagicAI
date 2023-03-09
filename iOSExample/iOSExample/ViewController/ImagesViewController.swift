@@ -32,7 +32,11 @@ final class ImagesViewController: ItemViewController {
         guard let prompt = getPromptValidated() else {
             return
         }
-        openMagicAI.images.generations(prompt: prompt) { result in
+        showLoadingView()
+        openMagicAI.images.generations(prompt: prompt) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.hideLoadingView()
+            }
             debugPrint(result)
         }
     }

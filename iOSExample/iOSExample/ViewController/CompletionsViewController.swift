@@ -31,7 +31,11 @@ final class CompletionsViewController: ItemViewController {
         guard let prompt = getPromptValidated() else {
             return
         }
-        openMagicAI.completions.createCompletion(prompt: prompt) { result in
+        showLoadingView()
+        openMagicAI.completions.createCompletion(prompt: prompt) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.hideLoadingView()
+            }
             debugPrint(result)
         }
     }

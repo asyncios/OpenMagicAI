@@ -30,7 +30,11 @@ final class ModelsViewController: ItemViewController {
     
 
     override func firstOnTouch(_ sender: Any) {
-        openMagicAI.models.listModels { result in
+        showLoadingView()
+        openMagicAI.models.listModels { [weak self] result in
+            DispatchQueue.main.async {
+                self?.hideLoadingView()
+            }
             debugPrint(result)
         }
     }
