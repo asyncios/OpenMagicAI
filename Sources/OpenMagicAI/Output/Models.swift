@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 public struct ListModels: Codable {
     public let data: [Model]
     public let object: String
