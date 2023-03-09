@@ -18,11 +18,10 @@ extension ChatApi {
         topP: Int? = 1,
         n: Int? = 1,
         stream: Bool? = false,
-        maxTokens: Int? = 4096,
         stop: [String]? = nil,
+        maxTokens: Int? = 4096,
         presencePenalty: Int? = 0,
         frequencyPenalty: Int? = 0,
-        bestOf: Int? = 1,
         user: String? = nil
     ) async throws -> ChatCompletions {
         return try await withCheckedThrowingContinuation { continuation in
@@ -33,11 +32,10 @@ extension ChatApi {
                 topP: topP,
                 n: n,
                 stream: stream,
-                maxTokens: maxTokens,
                 stop: stop,
+                maxTokens: maxTokens,
                 presencePenalty: presencePenalty,
                 frequencyPenalty: frequencyPenalty,
-                bestOf: bestOf,
                 user: user
             ) { result in
                 continuation.resume(with: result)

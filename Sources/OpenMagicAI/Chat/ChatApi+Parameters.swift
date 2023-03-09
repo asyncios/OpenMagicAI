@@ -33,11 +33,10 @@ extension ChatApi {
             let topP: Int?
             let n: Int?
             let stream: Bool?
-            let maxTokens: Int?
             let stop: [String]?
+            let maxTokens: Int?
             let presencePenalty: Int?
             let frequencyPenalty: Int?
-            let bestOf: Int?
             let user: String?
             enum CodingKeys: String, CodingKey {
                 case model
@@ -50,7 +49,6 @@ extension ChatApi {
                 case stop
                 case presencePenalty = "presence_penalty"
                 case frequencyPenalty = "frequency_penalty"
-                case bestOf = "best_of"
                 case user
             }
         }
