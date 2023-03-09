@@ -7,12 +7,12 @@
 
 import Foundation
 
-public final class CompletionsApi: ApiQueryable {
+public class CompletionsApi: ApiQueryable {
     private let apiKey: String
     private let urlSession: URLSession
-    init(apiKey: String) {
+    init(apiKey: String, urlSession: URLSession = .shared) {
         self.apiKey = apiKey
-        self.urlSession = .shared
+        self.urlSession = urlSession
     }
 
     public func createCompletion(

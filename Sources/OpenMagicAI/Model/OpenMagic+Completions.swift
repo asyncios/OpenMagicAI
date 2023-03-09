@@ -9,13 +9,13 @@ import Foundation
 
 extension OpenMagic {
 
-    public struct Completions: Decodable {
+    public struct Completions: Codable {
         public let object: String
         public let model: String
         public let choices: [Choice]
     }
 
-    public struct ChatCompletions: Decodable {
+    public struct ChatCompletions: Codable {
         let id: String
         let object: String
         let created: Int
@@ -27,7 +27,7 @@ extension OpenMagic {
 
 extension OpenMagic.Completions {
 
-    public struct Choice: Decodable {
+    public struct Choice: Codable {
         public let text: String
     }
 
@@ -35,7 +35,7 @@ extension OpenMagic.Completions {
 
 extension OpenMagic.ChatCompletions {
 
-    public struct Choice: Decodable {
+    public struct Choice: Codable {
         let index: Int
         let message: Message
         let finishReason: String
@@ -50,7 +50,7 @@ extension OpenMagic.ChatCompletions {
         let content: String
     }
 
-    public struct Usage: Decodable {
+    public struct Usage: Codable {
         let promptTokens: Int
         let completionTokens: Int
         let totalTokens: Int

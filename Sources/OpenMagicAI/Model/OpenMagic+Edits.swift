@@ -8,7 +8,7 @@
 import Foundation
 
 extension OpenMagic {
-    public struct Edits: Decodable {
+    public struct Edits: Codable {
         let object: String
         let created: Int
         let choices: [Choice]
