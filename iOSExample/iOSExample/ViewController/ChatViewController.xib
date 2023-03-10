@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatViewController" customModule="iOSExample" customModuleProvider="target">
             <connections>
+                <outlet property="contentStackView" destination="3n6-PW-5YJ" id="4Ee-dq-gh4"/>
                 <outlet property="messageTextField" destination="8FQ-8J-FcF" id="F66-vA-jOR"/>
                 <outlet property="tableView" destination="wQ8-97-41p" id="m3K-7M-oFo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -21,14 +22,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3n6-PW-5YJ">
-                    <rect key="frame" x="0.0" y="47" width="390" height="763"/>
+                    <rect key="frame" x="0.0" y="47" width="390" height="797.33333333333337"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wQ8-97-41p">
-                            <rect key="frame" x="0.0" y="0.0" width="390" height="704.66666666666663"/>
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="705"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </tableView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fUQ-bD-fQA">
-                            <rect key="frame" x="0.0" y="704.66666666666663" width="390" height="58.333333333333371"/>
+                            <rect key="frame" x="0.0" y="705" width="390" height="92.333333333333371"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8FQ-8J-FcF">
                                     <rect key="frame" x="12" y="12" width="298.66666666666669" height="34.333333333333336"/>
@@ -57,7 +58,7 @@
             <constraints>
                 <constraint firstItem="3n6-PW-5YJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="BlB-1N-UYz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3n6-PW-5YJ" secondAttribute="trailing" id="L1g-PE-iEm"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="3n6-PW-5YJ" secondAttribute="bottom" id="avR-ML-opS"/>
+                <constraint firstAttribute="bottom" secondItem="3n6-PW-5YJ" secondAttribute="bottom" priority="250" id="LB8-mt-wrK"/>
                 <constraint firstItem="3n6-PW-5YJ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="rJa-y6-xqw"/>
             </constraints>
             <point key="canvasLocation" x="138" y="21"/>

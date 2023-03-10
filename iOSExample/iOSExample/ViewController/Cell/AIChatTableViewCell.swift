@@ -7,19 +7,8 @@
 
 import UIKit
 
-final class AIChatTableViewCell: UITableViewCell {
+final class AIChatTableViewCell: BaseChatTableViewCell {
 
-    @IBOutlet weak var messageLabel: UILabel!
     static let identifier = "AIChatTableViewCell"
 
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        messageLabel.text = ""
-    }
-
-    var item: ChatItem? {
-        didSet {
-            messageLabel.text = item?.message
-        }
-    }
 }
