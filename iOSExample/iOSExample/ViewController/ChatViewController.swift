@@ -11,8 +11,9 @@ import OpenMagicAI
 final class ChatViewController: UIViewController, Loadable {
 
     @IBOutlet weak var messageTextField: UITextField!
+    @IBOutlet weak var inputStackView: UIStackView!
     @IBOutlet weak var tableView: UITableView!
-    private var items: [ChatItem] = []
+    private var messages: [ChatMessage] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,8 @@ final class ChatViewController: UIViewController, Loadable {
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
         tableView.estimatedRowHeight = 80
+        addGestureForDismiss()
+        addOnKeyboardConstraint()
     }
 
     @IBAction func sendOnTouch(_ sender: Any) {
@@ -34,27 +37,46 @@ final class ChatViewController: UIViewController, Loadable {
             DispatchQueue.main.async {
                 self?.hideLoadingView()
                 if case .success(let value) = result {
-                    var messages: [ChatItem] = []
+                    var newMessages: [ChatMessage] = []
                     for item in value.choices {
-                        messages.append(.init(role: item.message.role, message: item.message.content))
+                        newMessages.append(.init(role: item.message.role, message: item.message.content))
                     }
-                    self?.appendMessages(messages)
+                    self?.appendMessages(newMessages)
                 }
             }
             debugPrint(result)
         }
     }
 
-    func appendMessages(_ array: [ChatItem]) {
+}
+
+private extension ChatViewController {
+
+    func addGestureForDismiss() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(Self.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+
+    func addOnKeyboardConstraint() {
+        view.keyboardLayoutGuide.followsUndockedKeyboard = true
+        let inputStackViewOnKeyboard = view.keyboardLayoutGuide.topAnchor.constraint(equalTo: inputStackView.bottomAnchor, constant: 0) // Mark 2
+        view.keyboardLayoutGuide.setConstraints([inputStackViewOnKeyboard], activeWhenAwayFrom: .top)
+    }
+
+    func appendMessages(_ array: [ChatMessage]) {
         if array.isEmpty {
             return
         }
-        let size = items.count
+        let size = messages.count
         var indexPaths: [IndexPath] = []
         for (index,_) in array.enumerated() {
             indexPaths.append(.init(row: size+index, section: 0))
         }
-        items.append(contentsOf: array)
+        messages.append(contentsOf: array)
         tableView.insertRows(at: indexPaths, with: .bottom)
     }
 
@@ -62,7 +84,7 @@ final class ChatViewController: UIViewController, Loadable {
 
 extension ChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = items[indexPath.row]
+        let item = messages[indexPath.row]
         let role = item.role
         if role == "user" {
             let cell = tableView.dequeueReusableCell(withIdentifier: UserChatTableViewCell.identifier)! as! UserChatTableViewCell
@@ -77,6 +99,6 @@ extension ChatViewController: UITableViewDataSource {
         1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        items.count
+        messages.count
     }
 }

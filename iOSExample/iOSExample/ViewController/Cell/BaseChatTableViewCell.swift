@@ -16,7 +16,7 @@ class BaseChatTableViewCell: UITableViewCell {
         messageLabel.text = ""
     }
 
-    var item: ChatItem? {
+    var item: ChatMessage? {
         didSet {
             messageLabel.text = item?.message
         }
