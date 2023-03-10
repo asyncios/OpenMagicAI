@@ -10,7 +10,6 @@ import OpenMagicAI
 
 class ItemViewController: UIViewController, Loadable {
 
-    let openMagicAI = OpenMagicAI(apiKey: "")
     @IBOutlet var inputTextFields: [UITextField]!
     @IBOutlet var buttons: [UIButton]!
 
