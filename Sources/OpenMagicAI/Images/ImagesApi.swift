@@ -20,9 +20,17 @@ public final class ImagesApi: ApiQueryable {
         prompt: String,
         n: Int = 1,
         size: ImageSize = .init(width: 256, height: 256),
+        responseFormat: ResponseFormat? = .url,
+        user: String? = nil,
         onCompletion: @escaping (Result<Images, Error>) -> Void
     ) {
-        let parameters = Generations(prompt: prompt, n: n, size: size)
+        let parameters = CreateImage(
+            prompt: prompt,
+            n: n,
+            size: size,
+            responseFormat: responseFormat,
+            user: user
+        )
         openAiDataTask(urlSession: urlSession, endPoint: .images(.createEdit), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)
     }
 
