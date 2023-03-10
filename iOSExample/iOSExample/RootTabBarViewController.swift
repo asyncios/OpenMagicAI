@@ -7,36 +7,42 @@
 
 import UIKit
 
-class RootTabBarViewController: UITabBarController {
+final class RootTabBarViewController: UITabBarController {
 
-    lazy var completionsViewController: CompletionsViewController = {
+    private lazy var completionsViewController: CompletionsViewController = {
         let viewController = CompletionsViewController()
         viewController.tabBarItem.title = "Completions"
         return viewController
     }()
 
-    lazy var imagesViewController: ImagesViewController = {
+    private lazy var imagesViewController: ImagesViewController = {
         let viewController = ImagesViewController()
         viewController.tabBarItem.title = "Images"
         return viewController
     }()
 
-    lazy var editsViewController: EditsViewController = {
+    private lazy var editsViewController: EditsViewController = {
         let viewController = EditsViewController()
         viewController.tabBarItem.title = "Edits"
         return viewController
     }()
 
-    lazy var modelsViewController: ModelsViewController = {
+    private lazy var modelsViewController: ModelsViewController = {
         let viewController = ModelsViewController()
         viewController.tabBarItem.title = "Models"
+        return viewController
+    }()
+
+    private lazy var chatViewController: ChatViewController = {
+        let viewController = ChatViewController()
+        viewController.tabBarItem.title = "Chat"
         return viewController
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         viewControllers = [
-            completionsViewController, imagesViewController, editsViewController, modelsViewController
+            completionsViewController, imagesViewController, editsViewController, modelsViewController, chatViewController
         ]
     }
 

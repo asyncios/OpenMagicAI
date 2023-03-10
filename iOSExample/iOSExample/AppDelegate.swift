@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import OpenMagicAI
+
+let openMagicAI = OpenMagicAI(apiKey: "")
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
