@@ -17,7 +17,7 @@ class ChatViewController: UIViewController, Loadable {
     }
 
     @IBAction func sendOnTouch(_ sender: Any) {
-        guard let content = getInputValidated() else {
+        guard let content = getInputValidated(messageTextField) else {
             return
         }
         showLoadingView()
@@ -27,23 +27,5 @@ class ChatViewController: UIViewController, Loadable {
             }
             debugPrint(result)
         }
-    }
-    
-    func getInputValidated() -> String? {
-        guard let value = messageTextField.text, !value.isEmpty else {
-            inputAlert()
-            return nil
-        }
-        return value
-    }
-
-    func inputAlert() {
-        let alert = UIAlertController(
-            title: "OpenMagicAI",
-            message: "No Input",
-            preferredStyle: .alert
-        )
-        alert.addAction(.init(title: "Ok", style: .default))
-        present(alert, animated: true)
     }
 }

@@ -35,7 +35,7 @@ final class EditsViewController: ItemViewController {
     }
     
     override func firstOnTouch(_ sender: Any) {
-        guard let input = getFirstInputValidated(), let instruction = getSecondInputValidated() else {
+        guard let input = getInputValidated(inputTextFields[0]), let instruction = getInputValidated(inputTextFields[1]) else {
             return
         }
         showLoadingView()

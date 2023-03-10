@@ -33,7 +33,7 @@ final class ImagesViewController: ItemViewController {
     
 
     override func firstOnTouch(_ sender: Any) {
-        guard let prompt = getFirstInputValidated() else {
+        guard let prompt = getInputValidated(inputTextFields[0]) else {
             return
         }
         showLoadingView()

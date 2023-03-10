@@ -23,29 +23,4 @@ class ItemViewController: UIViewController, Loadable {
     @IBAction func secondOnTouch(_ sender: Any) {
     }
 
-    func getFirstInputValidated() -> String? {
-        guard let value = inputTextFields[0].text, !value.isEmpty else {
-            inputAlert()
-            return nil
-        }
-        return value
-    }
-
-    func getSecondInputValidated() -> String? {
-        guard let value = inputTextFields[1].text, !value.isEmpty else {
-            inputAlert()
-            return nil
-        }
-        return value
-    }
-
-    func inputAlert() {
-        let alert = UIAlertController(
-            title: "OpenMagicAI",
-            message: "No Input",
-            preferredStyle: .alert
-        )
-        alert.addAction(.init(title: "Ok", style: .default))
-        present(alert, animated: true)
-    }
 }
