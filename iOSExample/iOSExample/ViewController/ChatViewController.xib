@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatViewController" customModule="iOSExample" customModuleProvider="target">
             <connections>
                 <outlet property="messageTextField" destination="8FQ-8J-FcF" id="F66-vA-jOR"/>
+                <outlet property="tableView" destination="wQ8-97-41p" id="m3K-7M-oFo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,35 +20,45 @@
             <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fUQ-bD-fQA">
-                    <rect key="frame" x="0.0" y="751.66666666666663" width="390" height="58.333333333333371"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3n6-PW-5YJ">
+                    <rect key="frame" x="0.0" y="47" width="390" height="763"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8FQ-8J-FcF">
-                            <rect key="frame" x="12" y="12" width="298.66666666666669" height="34.333333333333336"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="okh-bG-XlI">
-                            <rect key="frame" x="314.66666666666669" y="12" width="63.333333333333314" height="34.333333333333336"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="63.329999999999998" id="ayN-OW-sRg"/>
-                            </constraints>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Send"/>
-                            <connections>
-                                <action selector="sendOnTouch:" destination="-1" eventType="touchUpInside" id="tTd-M0-As0"/>
-                            </connections>
-                        </button>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wQ8-97-41p">
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="704.66666666666663"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </tableView>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fUQ-bD-fQA">
+                            <rect key="frame" x="0.0" y="704.66666666666663" width="390" height="58.333333333333371"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8FQ-8J-FcF">
+                                    <rect key="frame" x="12" y="12" width="298.66666666666669" height="34.333333333333336"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="okh-bG-XlI">
+                                    <rect key="frame" x="314.66666666666669" y="12" width="63.333333333333314" height="34.333333333333336"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="63.329999999999998" id="ayN-OW-sRg"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Send"/>
+                                    <connections>
+                                        <action selector="sendOnTouch:" destination="-1" eventType="touchUpInside" id="tTd-M0-As0"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <edgeInsets key="layoutMargins" top="12" left="12" bottom="12" right="12"/>
+                        </stackView>
                     </subviews>
-                    <edgeInsets key="layoutMargins" top="12" left="12" bottom="12" right="12"/>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="fUQ-bD-fQA" secondAttribute="bottom" id="fE8-qt-GFU"/>
-                <constraint firstItem="fUQ-bD-fQA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fdk-85-rqT"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fUQ-bD-fQA" secondAttribute="trailing" id="sdb-00-AYR"/>
+                <constraint firstItem="3n6-PW-5YJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="BlB-1N-UYz"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3n6-PW-5YJ" secondAttribute="trailing" id="L1g-PE-iEm"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="3n6-PW-5YJ" secondAttribute="bottom" id="avR-ML-opS"/>
+                <constraint firstItem="3n6-PW-5YJ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="rJa-y6-xqw"/>
             </constraints>
             <point key="canvasLocation" x="138" y="21"/>
         </view>
