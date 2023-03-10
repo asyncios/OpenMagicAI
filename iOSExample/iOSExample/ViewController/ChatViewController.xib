@@ -19,16 +19,19 @@
             <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fUQ-bD-fQA">
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fUQ-bD-fQA">
                     <rect key="frame" x="0.0" y="751.66666666666663" width="390" height="58.333333333333371"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8FQ-8J-FcF">
-                            <rect key="frame" x="12" y="12" width="302.66666666666669" height="34.333333333333336"/>
+                            <rect key="frame" x="12" y="12" width="298.66666666666669" height="34.333333333333336"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="okh-bG-XlI">
                             <rect key="frame" x="314.66666666666669" y="12" width="63.333333333333314" height="34.333333333333336"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="63.329999999999998" id="ayN-OW-sRg"/>
+                            </constraints>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Send"/>
                             <connections>
