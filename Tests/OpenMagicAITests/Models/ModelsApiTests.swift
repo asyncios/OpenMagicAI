@@ -12,7 +12,7 @@ final class ModelsApiTests: XCTestCase {
 
     private var sut: ModelsApi!
     override func setUpWithError() throws {
-        sut = .init(apiKey: "", urlSession: URLSessionMock.getURLSession())
+        sut = .init(apiKey: "test", urlSession: URLSessionMock.getURLSession())
     }
 
     override func tearDownWithError() throws {

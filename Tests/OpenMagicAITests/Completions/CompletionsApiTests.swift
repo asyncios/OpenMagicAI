@@ -12,7 +12,7 @@ final class CompletionsApiTests: XCTestCase {
 
     private var sut: CompletionsApi!
     override func setUpWithError() throws {
-        sut = .init(apiKey: "", urlSession: URLSessionMock.getURLSession())
+        sut = .init(apiKey: "test", urlSession: URLSessionMock.getURLSession())
     }
 
     override func tearDownWithError() throws {
