@@ -23,10 +23,10 @@ final class RootTabBarViewController: UITabBarController {
         return viewController
     }()
 
-    private lazy var editsViewController: EditsViewController = {
-        let viewController = EditsViewController()
-        viewController.tabBarItem.title = "Edits"
-        viewController.tabBarItem.image = .init(systemName: "pencil.line")
+    private lazy var chatViewController: ChatViewController = {
+        let viewController = ChatViewController()
+        viewController.tabBarItem.title = "Chat"
+        viewController.tabBarItem.image = .init(systemName: "message")
         return viewController
     }()
 
@@ -37,17 +37,21 @@ final class RootTabBarViewController: UITabBarController {
         return viewController
     }()
 
-    private lazy var chatViewController: ChatViewController = {
-        let viewController = ChatViewController()
-        viewController.tabBarItem.title = "Chat"
-        viewController.tabBarItem.image = .init(systemName: "message")
+    private lazy var editsViewController: EditsViewController = {
+        let viewController = EditsViewController()
+        viewController.tabBarItem.title = "Edits"
+        viewController.tabBarItem.image = .init(systemName: "pencil.line")
         return viewController
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         viewControllers = [
-            completionsViewController, imagesViewController, editsViewController, modelsViewController, chatViewController
+            completionsViewController,
+            imagesViewController,
+            chatViewController,
+            modelsViewController,
+            editsViewController
         ]
     }
 
