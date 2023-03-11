@@ -144,17 +144,17 @@
 		84A19C8629BC2BD000FF6D79 /* SampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				84A19C8729BC2BD000FF6D79 /* AppDelegate.swift */,
+				84A19C9029BC2BD000FF6D79 /* Assets.xcassets */,
+				84A19CC229BC2C6F00FF6D79 /* Extension */,
+				84A19C9529BC2BD000FF6D79 /* Info.plist */,
+				84A19C9229BC2BD000FF6D79 /* LaunchScreen.storyboard */,
 				84A19CDA29BC2C8500FF6D79 /* Load */,
+				84A19C8D29BC2BD000FF6D79 /* Main.storyboard */,
 				84A19CC729BC2C8500FF6D79 /* Model */,
 				84A19CDD29BC2C8500FF6D79 /* RootTabBarViewController.swift */,
-				84A19CC929BC2C8500FF6D79 /* ViewController */,
-				84A19CC229BC2C6F00FF6D79 /* Extension */,
-				84A19C8729BC2BD000FF6D79 /* AppDelegate.swift */,
 				84A19C8929BC2BD000FF6D79 /* SceneDelegate.swift */,
-				84A19C8D29BC2BD000FF6D79 /* Main.storyboard */,
-				84A19C9029BC2BD000FF6D79 /* Assets.xcassets */,
-				84A19C9229BC2BD000FF6D79 /* LaunchScreen.storyboard */,
-				84A19C9529BC2BD000FF6D79 /* Info.plist */,
+				84A19CC929BC2C8500FF6D79 /* ViewController */,
 			);
 			path = SampleApp;
 			sourceTree = "<group>";
