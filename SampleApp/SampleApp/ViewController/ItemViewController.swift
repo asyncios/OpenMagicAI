@@ -15,6 +15,7 @@ class ItemViewController: UIViewController, Loadable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addGestureForDismiss()
     }
 
     @IBAction func firstOnTouch(_ sender: Any) {
@@ -23,4 +24,12 @@ class ItemViewController: UIViewController, Loadable {
     @IBAction func secondOnTouch(_ sender: Any) {
     }
 
+    private func addGestureForDismiss() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(Self.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }

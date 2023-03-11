@@ -36,6 +36,7 @@ final class ImagesViewController: ItemViewController {
         guard let prompt = getInputValidated(inputTextFields[0]) else {
             return
         }
+        view.endEditing(true)
         showLoadingView()
         openMagicAI.images.createImage(prompt: prompt) { [weak self] result in
             DispatchQueue.main.async {
