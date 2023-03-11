@@ -6,17 +6,23 @@
 //
 
 import XCTest
+import Combine
 @testable import OpenMagicAI
 
 final class EditsApiTests: XCTestCase {
 
     private var sut: EditsApi!
+    private var cancellables: Set<AnyCancellable> = []
+
     override func setUpWithError() throws {
+        cancellables = []
         sut = .init(apiKey: "test", urlSession: URLSessionMock.getURLSession())
     }
 
     override func tearDownWithError() throws {
         MockURLProtocol.mockData = [:]
+        cancellables.forEach({ $0.cancel() })
+        cancellables.removeAll()
     }
 
     func testCreateEdit() throws {
@@ -49,5 +55,28 @@ extension EditsApiTests {
         let result = try await self.sut.createEdit(instruction: "test")
         // Then
         XCTAssertEqual(mock.0.object, result.object)
+    }
+}
+
+// MARK: Combine
+extension EditsApiTests {
+    func testCreateEditFuture() async throws -> Void {
+        // Given
+        let path = EndPoint.edits(.createEdit).url.path
+        let mock = try Mocks.createEdit.getMock(type: Edits.self)
+        MockURLProtocol.mockData[path] = mock.1
+        let expectation: XCTestExpectation = .init(description: "testCreateEditFuture")
+        var result: Edits?
+        // Case
+        sut.createEditFuture(instruction: "").sink { result in
+            if case .finished = result {
+                expectation.fulfill()
+            }
+        } receiveValue: { value in
+            result = value
+        }.store(in: &cancellables)
+        // Then
+        wait(for: [expectation], timeout: 1)
+        XCTAssertEqual(mock.0.object, result?.object)
     }
 }

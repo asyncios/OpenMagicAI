@@ -6,25 +6,31 @@
 //
 
 import XCTest
+import Combine
 @testable import OpenMagicAI
 
 final class ImagesApiTests: XCTestCase {
     
     private var sut: ImagesApi!
+    private var cancellables: Set<AnyCancellable> = []
+
     override func setUpWithError() throws {
+        cancellables = []
         sut = .init(apiKey: "test", urlSession: URLSessionMock.getURLSession())
     }
     
     override func tearDownWithError() throws {
         MockURLProtocol.mockData = [:]
+        cancellables.forEach({ $0.cancel() })
+        cancellables.removeAll()
     }
     
-    func testGenerations() throws {
+    func testCreateImage() throws {
         // Given
         let path = EndPoint.images(.createEdit).url.path
         let mock = try Mocks.createImage.getMock(type: Images.self)
         MockURLProtocol.mockData[path] = mock.1
-        let expecation: XCTestExpectation = .init(description: "testGenerations")
+        let expecation: XCTestExpectation = .init(description: "testCreateImage")
         // Case
         sut.createImage(prompt: "test") { result in
             if case .success(let success) = result,
@@ -38,10 +44,9 @@ final class ImagesApiTests: XCTestCase {
     
 }
 
-
 // MARK: Async
 extension ImagesApiTests {
-    func testGenerationsAsync() async throws -> Void {
+    func testCreateImageAsync() async throws -> Void {
         // Given
         let path = EndPoint.images(.createEdit).url.path
         let mock = try Mocks.createImage.getMock(type: Images.self)
@@ -50,5 +55,28 @@ extension ImagesApiTests {
         let result = try await sut.createImage(prompt: "test")
         // When
         XCTAssertEqual(mock.0.created, result.created)
+    }
+}
+
+// MARK: Combine
+extension ImagesApiTests {
+    func testCreateImageFurure() async throws -> Void {
+        // Given
+        let path = EndPoint.images(.createEdit).url.path
+        let mock = try Mocks.createImage.getMock(type: Images.self)
+        MockURLProtocol.mockData[path] = mock.1
+        let expectation: XCTestExpectation = .init(description: "testCreateImageFurure")
+        var result: Images?
+        // Case
+        sut.createImageFuture(prompt: "").sink { result in
+            if case .finished = result {
+                expectation.fulfill()
+            }
+        } receiveValue: { value in
+            result = value
+        }.store(in: &cancellables)
+        // Then
+        wait(for: [expectation], timeout: 1)
+        XCTAssertEqual(mock.0.created, result?.created)
     }
 }
