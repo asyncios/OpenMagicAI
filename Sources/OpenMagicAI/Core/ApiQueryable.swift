@@ -19,11 +19,15 @@ extension ApiQueryable {
         parameters: E,
         onCompletion: @escaping (Result<D, Error>) -> Void
     ) {
-        var request = prepareRequest(endPoint: endPoint, apiKey: apiKey)
-        if let value = try? JSONEncoder().encode(parameters) {
-            request.httpBody = value
+        do {
+            var request = try prepareRequest(endPoint: endPoint, apiKey: apiKey)
+            if let value = try? JSONEncoder().encode(parameters) {
+                request.httpBody = value
+            }
+            openAiRequestDataTask(urlSession: urlSession, request: request, onCompletion: onCompletion)
+        } catch {
+            onCompletion(.failure(error))
         }
-        openAiRequestDataTask(urlSession: urlSession, request: request, onCompletion: onCompletion)
     }
 
     func openAiDataTask<D: Decodable>(
@@ -32,15 +36,22 @@ extension ApiQueryable {
         apiKey: String,
         onCompletion: @escaping (Result<D, Error>) -> Void
     ) {
-        let request = prepareRequest(endPoint: endPoint, apiKey: apiKey)
-        openAiRequestDataTask(urlSession: urlSession, request: request, onCompletion: onCompletion)
+        do {
+            let request = try prepareRequest(endPoint: endPoint, apiKey: apiKey)
+            openAiRequestDataTask(urlSession: urlSession, request: request, onCompletion: onCompletion)
+        } catch {
+            onCompletion(.failure(error))
+        }
     }
 
 }
 
 private extension ApiQueryable {
 
-    func prepareRequest(endPoint: EndPoint, apiKey: String) -> URLRequest {
+    func prepareRequest(endPoint: EndPoint, apiKey: String) throws -> URLRequest {
+        if apiKey.isEmpty {
+            throw OpenMagicAI.OMError.noApiKey
+        }
         var request = URLRequest(url: endPoint.url)
         request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -61,14 +72,15 @@ private extension ApiQueryable {
                 return
             }
             guard let data = data else {
-                onCompletion(.failure(OpenMagicAI.OMError.decodingError))
+                onCompletion(.failure(OpenMagicAI.OMError.decodingError(response: nil)))
                 return
             }
             do {
                 let response = try JSONDecoder().decode(D.self, from: data)
                 onCompletion(.success(response))
             } catch {
-                onCompletion(.failure(OpenMagicAI.OMError.decodingError))
+                let response = try? JSONSerialization.jsonObject(with: data) as? [String: Any]
+                onCompletion(.failure(OpenMagicAI.OMError.decodingError(response: response)))
             }
         }.resume()
     }

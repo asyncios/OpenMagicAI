@@ -9,6 +9,7 @@ import Foundation
 
 extension OpenMagicAI {
     public enum OMError: Error {
-        case decodingError
+        case noApiKey
+        case decodingError(response: [String: Any]?)
     }
 }

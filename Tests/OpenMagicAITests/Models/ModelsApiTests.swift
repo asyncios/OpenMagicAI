@@ -6,17 +6,22 @@
 //
 
 import XCTest
+import Combine
 @testable import OpenMagicAI
 
 final class ModelsApiTests: XCTestCase {
 
     private var sut: ModelsApi!
+    private var cancellables: Set<AnyCancellable> = []
+
     override func setUpWithError() throws {
-        sut = .init(apiKey: "", urlSession: URLSessionMock.getURLSession())
+        sut = .init(apiKey: "test", urlSession: URLSessionMock.getURLSession())
     }
 
     override func tearDownWithError() throws {
         MockURLProtocol.mockData = [:]
+        cancellables.forEach({ $0.cancel() })
+        cancellables.removeAll()
     }
 
     func testListModels() throws {
@@ -48,5 +53,28 @@ extension ModelsApiTests {
         let result = try await sut.listModels()
         // When
         XCTAssertEqual(mock.0.object, result.object)
+    }
+}
+
+// MARK: Combine
+extension ModelsApiTests {
+    func testListModelsFuture() async throws -> Void {
+        // Given
+        let path = EndPoint.models(.listModels).url.path
+        let mock = try Mocks.listModels.getMock(type: ListModels.self)
+        MockURLProtocol.mockData[path] = mock.1
+        let expectation: XCTestExpectation = .init(description: "testListModelsFuture")
+        var result: ListModels?
+        // Case
+        sut.listModelsFuture().sink { result in
+            if case .finished = result {
+                expectation.fulfill()
+            }
+        } receiveValue: { value in
+            result = value
+        }.store(in: &cancellables)
+        // Then
+        wait(for: [expectation], timeout: 1)
+        XCTAssertEqual(mock.0.object, result?.object)
     }
 }
