@@ -3,6 +3,12 @@
 [![Swift Package Manager](https://img.shields.io/badge/Swift_Package_Manager-Compatible-green)](https://img.shields.io/badge/Swift_Package_Manager-Compatible-green)
 [![Async Await](https://img.shields.io/badge/Async_Await-Support-blue)](https://img.shields.io/badge/Async_Await-Support-blue)
 [![Combine](https://img.shields.io/badge/Combine-Support-blue)](https://img.shields.io/badge/Combine-Support-blue)
+<div id="badges">
+  <a href="https://www.linkedin.com/in/francocadillo/">
+    <img src="https://img.shields.io/badge/Linkedin-blue?style=flat&logo=linkedin&labelColor=blue" alt="LinkedIn Badge"/>
+  </a>
+</div>
+
 
 # OpenMagicAI: A Non-official OpenAI library
 
