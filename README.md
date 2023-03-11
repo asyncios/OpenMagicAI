@@ -8,6 +8,13 @@
 
 OpenMagicAI is a friendly Swift library for accesing to OpenAI API. OpenAI api [docs](https://platform.openai.com/docs/introduction) reference
 
+## Example usage
+
+There's a sample app [here](https://github.com/asyncios/OpenMagicAI/tree/master/SampleApp) using the methods of OpenMagicAI library.
+
+![Simulator Screen Recording - iPhone 14 Pro - 2023-03-11 at 00 06 08](https://user-images.githubusercontent.com/11830293/224493181-1373c862-a3c6-4fec-995a-d6949fcfc3ce.gif)
+
+
 ## Usage
 
 Set your API Key, if you don't have one [create it here](https://platform.openai.com/account/api-keys)
