@@ -17,7 +17,7 @@ public final class ChatApi: ApiQueryable {
     }
 
 
-    /// Creates a completion for the chat message
+    /// Creates a completion for the chat message.
     ///
     /// - Parameters:
     ///   - model: String

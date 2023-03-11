@@ -10,6 +10,12 @@ import Foundation
 extension ImagesApi {
     @available(swift 5.5)
     @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+    /// Creates an image given a prompt.
+    ///
+    /// - Parameters:
+    ///   - prompt: String
+    ///
+    /// - Returns: Async ``Images``
     public func createImage(
         prompt: String,
         n: Int = 1,

@@ -15,6 +15,11 @@ public final class CompletionsApi: ApiQueryable {
         self.urlSession = urlSession
     }
 
+    /// Creates a completion for the provided prompt and parameters
+    ///
+    /// - Parameters:
+    ///   - prompt: String
+    ///   - onCompletion: ``Completions``
     public func createCompletion(
         model: OpenMagicModel = .chatGPT35(.textDavinci003),
         prompt: String,
