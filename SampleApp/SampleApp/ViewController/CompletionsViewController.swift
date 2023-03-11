@@ -35,6 +35,7 @@ final class CompletionsViewController: ItemViewController {
         guard let prompt = getInputValidated(inputTextFields[0]) else {
             return
         }
+        view.endEditing(true)
         showLoadingView()
         openMagicAI.completions.createCompletion(prompt: prompt) { [weak self] result in
             DispatchQueue.main.async {

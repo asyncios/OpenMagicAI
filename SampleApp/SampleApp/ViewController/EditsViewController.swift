@@ -38,6 +38,7 @@ final class EditsViewController: ItemViewController {
         guard let input = getInputValidated(inputTextFields[0]), let instruction = getInputValidated(inputTextFields[1]) else {
             return
         }
+        view.endEditing(true)
         showLoadingView()
         openMagicAI.edits.createEdit(input: input, instruction: instruction) { [weak self] result in
             DispatchQueue.main.async {

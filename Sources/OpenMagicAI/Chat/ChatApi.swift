@@ -16,7 +16,6 @@ public final class ChatApi: ApiQueryable {
         self.urlSession = urlSession
     }
 
-
     /// Creates a completion for the chat message.
     ///
     /// - Parameters:
