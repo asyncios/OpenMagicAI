@@ -41,7 +41,7 @@ Task {
 ### Combine usage
 
 ```swift
-openMagicAI.images.createImageFuture(prompt: "").sink { _ in
+openMagicAI.images.createImageFuture(prompt: "dog in the park").sink { _ in
 } receiveValue: { value in
   debugPrint(value)
 }.store(in: &cancellables)
