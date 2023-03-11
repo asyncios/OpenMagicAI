@@ -17,6 +17,12 @@ public final class ChatApi: ApiQueryable {
     }
 
 
+    /// Creates a completion for the chat message
+    ///
+    /// - Parameters:
+    ///   - model: String
+    ///   - messages: array of message
+    ///   - onCompletion: ``ChatCompletions``
     public func chatCompletion(
         model: ChatCompletion.Model = .gpt35Turbo,
         messages: [ChatCompletion.Message],
