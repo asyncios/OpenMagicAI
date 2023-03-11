@@ -33,5 +33,12 @@ extension ImagesApi {
             self.responseFormat = responseFormat
             self.user = user
         }
+        enum CodingKeys: String, CodingKey {
+            case prompt
+            case n
+            case size
+            case responseFormat = "response_format"
+            case user
+        }
     }
 }

@@ -15,6 +15,13 @@ public final class EditsApi: ApiQueryable {
         self.urlSession = urlSession
     }
 
+    /// Creates a new edit for the provided input, instruction, and parameters.
+    ///
+    /// - Parameters:
+    ///   - model: String
+    ///   - input: String (optional)
+    ///   - instruction: String
+    ///   - onCompletion: ``Edits``
     public func createEdit(
         model: CreateEdit.Model = .textDavinciEdit001,
         input: String = "",

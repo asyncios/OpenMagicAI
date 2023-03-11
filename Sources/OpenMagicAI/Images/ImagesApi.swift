@@ -16,6 +16,11 @@ public final class ImagesApi: ApiQueryable {
         self.urlSession = urlSession
     }
 
+    /// Creates an image given a prompt.
+    ///
+    /// - Parameters:
+    ///   - prompt: String
+    ///   - onCompletion: ``Images``
     public func createImage(
         prompt: String,
         n: Int = 1,

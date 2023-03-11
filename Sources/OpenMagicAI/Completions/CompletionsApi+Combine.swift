@@ -11,6 +11,12 @@ import Combine
 extension CompletionsApi {
     @available(swift 5.5)
     @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+    /// Creates a completion for the provided prompt and parameters
+    ///
+    /// - Parameters:
+    ///   - prompt: String
+    ///
+    /// - Returns: Future ``Completions``
     public func createCompletionFuture(
         model: OpenMagicModel = .chatGPT35(.textDavinci003),
         prompt: String,

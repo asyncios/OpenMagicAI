@@ -16,6 +16,10 @@ public final class ModelsApi: ApiQueryable {
         self.urlSession = urlSession
     }
 
+    /// Lists the currently available models, and provides basic information about each one such as the owner and availability.
+    ///
+    /// - Parameters:
+    ///   - onCompletion: ``ListModels``
     public func listModels(
         onCompletion: @escaping (Result<ListModels, Error>) -> Void
     ) {
