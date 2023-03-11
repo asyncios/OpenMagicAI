@@ -50,7 +50,7 @@ Set your API Key, if you don't have one [create it here](https://platform.openai
 #### Closure usage
 
 ```swift
-openMagicAI.images.createImage(prompt: "dog in the park") { result in
+openMagicAI.images.createImage(prompt: "dog in a park") { result in
    debugPrint(result)
 }
 ```
@@ -59,7 +59,7 @@ openMagicAI.images.createImage(prompt: "dog in the park") { result in
 
 ```swift
 Task {
-  let result = try await openMagicAI.images.createImage("dog in the park")
+  let result = try await openMagicAI.images.createImage("dog in a park")
   debugPrint(result)
 }
 ```
@@ -67,7 +67,7 @@ Task {
 #### Combine usage
 
 ```swift
-openMagicAI.images.createImageFuture(prompt: "dog in the park").sink { _ in
+openMagicAI.images.createImageFuture(prompt: "dog in a park").sink { _ in
 } receiveValue: { value in
   debugPrint(value)
 }.store(in: &cancellables)
