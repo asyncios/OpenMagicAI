@@ -19,6 +19,10 @@ OpenMagicAI is a friendly Swift library for accesing to OpenAI API. OpenAI api o
 There's a sample app [here](https://github.com/asyncios/OpenMagicAI/tree/master/SampleApp) using the methods of OpenMagicAI library.
 
 <table>
+<tr>
+    <th>Chat</th>
+    <th>Create Image</th>
+  </tr>
   <tr>
     <th>
       <img src="https://user-images.githubusercontent.com/11830293/224502596-b7a2d90c-bcd2-4f4d-b2c7-9d2ff0b08971.gif" width="220"/>
