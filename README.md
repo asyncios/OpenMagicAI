@@ -12,14 +12,38 @@
 
 # OpenMagicAI: A Non-official OpenAI iOS library
 
-OpenMagicAI is a friendly Swift library for accesing to OpenAI API. OpenAI api official [docs](https://platform.openai.com/docs/introduction) reference
+OpenMagicAI is a friendly Swift library for accesing to OpenAI API. OpenAI api official [docs](https://platform.openai.com/docs/introduction) reference.
 
 ## Example usage
 
 There's a sample app [here](https://github.com/asyncios/OpenMagicAI/tree/master/SampleApp) using the methods of OpenMagicAI library.
 
-![openmagicaiexample](https://user-images.githubusercontent.com/11830293/224493951-b18878f8-953d-478f-b229-22e0c8e7592c.gif)
+<table>
+<tr>
+    <th>Chat</th>
+    <th>Create Image</th>
+  </tr>
+  <tr>
+    <th>
+      <img src="https://user-images.githubusercontent.com/11830293/224502596-b7a2d90c-bcd2-4f4d-b2c7-9d2ff0b08971.gif" width="220"/>
+    </th>
+    <th>
+      <img src="https://user-images.githubusercontent.com/11830293/224502600-d18b51e3-892e-403c-a36b-314e8ff0b6cf.gif" width="220"/>
+    </th>
+  </tr>
+</table>
 
+## Installation
+
+#### Swift Package Manager (SPM)
+
+[SPM](https://swift.org/package-manager/) is a tool for managing the distribution of Swift code.
+
+```swift
+dependencies: [ 
+  .package(url: "https://github.com/asyncios/OpenMagicAI.git", from: "1.0.0") 
+ ]
+```
 
 ## Usage
 
@@ -27,27 +51,27 @@ Set your API Key, if you don't have one [create it here](https://platform.openai
 
 `let openMagicAI = OpenAISwift(authToken: "APIKEY")`
 
-### Closure usage
+#### Closure usage
 
 ```swift
-openMagicAI.images.createImage(prompt: "dog in the park") { result in
+openMagicAI.images.createImage(prompt: "dog in a park") { result in
    debugPrint(result)
 }
 ```
 
-### Async Await usage
+#### Async Await usage
 
 ```swift
 Task {
-  let result = try await openMagicAI.images.createImage("dog in the park")
+  let result = try await openMagicAI.images.createImage("dog in a park")
   debugPrint(result)
 }
 ```
 
-### Combine usage
+#### Combine usage
 
 ```swift
-openMagicAI.images.createImageFuture(prompt: "dog in the park").sink { _ in
+openMagicAI.images.createImageFuture(prompt: "dog in a park").sink { _ in
 } receiveValue: { value in
   debugPrint(value)
 }.store(in: &cancellables)
