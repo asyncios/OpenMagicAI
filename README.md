@@ -4,15 +4,41 @@
 [![Async Await](https://img.shields.io/badge/Async_Await-Support-blue)](https://img.shields.io/badge/Async_Await-Support-blue)
 [![Combine](https://img.shields.io/badge/Combine-Support-blue)](https://img.shields.io/badge/Combine-Support-blue)
 
-<div id="badges">
-  <a href="[your-linkedin-URL](https://www.linkedin.com/in/francocadillo/)">
-    <img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
-  </a>
-</div>
-
 # OpenMagicAI
 
-A description of this package.
+OpenMagicAI is a friendly Swift library for accesing to OpenAI API. OpenAI api [docs](https://platform.openai.com/docs/introduction) reference
+
+## Usage
+
+Set your API Key, if you don't have one [create it here](https://platform.openai.com/account/api-keys)
+
+`let openMagicAI = OpenAISwift(authToken: "APIKEY")`
+
+### Closure usage
+
+```swift
+openMagicAI.images.createImage(prompt: "dog in the park") { result in
+   debugPrint(result)
+}
+```
+
+### Async Await usage
+
+```swift
+Task {
+  let result = try await openMagicAI.images.createImage("dog in the park")
+  debugPrint(result)
+}
+```
+
+### Combine usage
+
+```swift
+openMagicAI.images.createImageFuture(prompt: "").sink { _ in
+} receiveValue: { value in
+  debugPrint(value)
+}.store(in: &cancellables)
+```
 
 ## Licenses
 
