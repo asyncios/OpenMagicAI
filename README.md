@@ -12,7 +12,7 @@
 
 # OpenMagicAI: A Non-official OpenAI iOS library
 
-OpenMagicAI is a friendly Swift library for accesing to OpenAI API. OpenAI api official [docs](https://platform.openai.com/docs/introduction) reference
+OpenMagicAI is a friendly Swift library for accesing to OpenAI API. OpenAI api official [docs](https://platform.openai.com/docs/introduction) reference.
 
 ## Example usage
 
