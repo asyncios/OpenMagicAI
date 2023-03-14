@@ -25,13 +25,17 @@ There's a sample app [here](https://github.com/asyncios/OpenMagicAI/tree/master/
 <tr>
     <th>Chat</th>
     <th>Create Image</th>
+    <th>List Models</th>
   </tr>
   <tr>
     <th>
-      <img src="https://user-images.githubusercontent.com/11830293/224502596-b7a2d90c-bcd2-4f4d-b2c7-9d2ff0b08971.gif" width="220"/>
+      <img src="https://user-images.githubusercontent.com/11830293/225047055-a2a1fd22-9920-4e2e-a5c2-20181db4bc18.gif" width="220"/>
     </th>
     <th>
-      <img src="https://user-images.githubusercontent.com/11830293/224502600-d18b51e3-892e-403c-a36b-314e8ff0b6cf.gif" width="220"/>
+      <img src="https://user-images.githubusercontent.com/11830293/225047312-4e5ac16b-51af-4499-9417-790a5ec01cd7.gif" width="220"/>
+    </th>
+    <th>
+      <img src="https://user-images.githubusercontent.com/11830293/225047637-5026a063-e131-4363-80e7-70ee3d09423c.gif" width="220"/>
     </th>
   </tr>
 </table>
@@ -44,7 +48,7 @@ There's a sample app [here](https://github.com/asyncios/OpenMagicAI/tree/master/
 
 ```swift
 dependencies: [ 
-  .package(url: "https://github.com/asyncios/OpenMagicAI.git", from: "1.0.1") 
+  .package(url: "https://github.com/asyncios/OpenMagicAI.git", from: "1.1.0") 
  ]
 ```
 
