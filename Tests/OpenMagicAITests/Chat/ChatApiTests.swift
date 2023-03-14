@@ -25,13 +25,13 @@ final class ChatApiTests: XCTestCase {
         cancellables.removeAll()
     }
 
-    func testChatCompletion() async throws -> Void {
+    func testCreateChatCompletion() async throws -> Void {
         // Given
-        let path = EndPoint.chat(.chatCompletion).url.path
+        let path = EndPoint.chat(.createChatCompletion).url.path
         let mock = try Mocks.chatCompletion.getMock(type: ChatCompletionsCreated.self)
         MockURLProtocol.mockData[path] = mock.1
         // Case
-        let expectation: XCTestExpectation = .init(description: "testChatCompletion")
+        let expectation: XCTestExpectation = .init(description: "testCreateChatCompletion")
         sut.createChatCompletion(messages: []) { result in
             if case .success(let success) = result,
                success.object == mock.0.object {
@@ -46,9 +46,9 @@ final class ChatApiTests: XCTestCase {
 
 // MARK: Async
 extension ChatApiTests {
-    func testChatCompletionAsync() async throws -> Void {
+    func testCreateChatCompletionAsync() async throws -> Void {
         // Given
-        let path = EndPoint.chat(.chatCompletion).url.path
+        let path = EndPoint.chat(.createChatCompletion).url.path
         let mock = try Mocks.chatCompletion.getMock(type: ChatCompletionsCreated.self)
         MockURLProtocol.mockData[path] = mock.1
         // Case
@@ -60,12 +60,12 @@ extension ChatApiTests {
 
 // MARK: Combine
 extension ChatApiTests {
-    func testChatCompletionFuture() async throws -> Void {
+    func testCreateChatCompletionFuture() async throws -> Void {
         // Given
-        let path = EndPoint.chat(.chatCompletion).url.path
+        let path = EndPoint.chat(.createChatCompletion).url.path
         let mock = try Mocks.chatCompletion.getMock(type: ChatCompletionsCreated.self)
         MockURLProtocol.mockData[path] = mock.1
-        let expectation: XCTestExpectation = .init(description: "testChatCompletionFuture")
+        let expectation: XCTestExpectation = .init(description: "testCreateChatCompletionFuture")
         var result: ChatCompletionsCreated?
         // Case
         sut.createChatCompletionFuture(messages: []).sink { result in

@@ -23,8 +23,8 @@ public final class ChatApi: ApiQueryable {
     ///   - messages: array of message
     ///   - onCompletion: ``ChatCompletionsCreated``
     public func createChatCompletion(
-        model: ChatCompletion.Model = .gpt35Turbo,
-        messages: [ChatCompletion.Message],
+        model: CreateChatCompletion.Model = .gpt35Turbo,
+        messages: [CreateChatCompletion.Message],
         temperature: Int? = 1,
         topP: Int? = 1,
         n: Int? = 1,
@@ -36,7 +36,7 @@ public final class ChatApi: ApiQueryable {
         user: String? = nil,
         onCompletion: @escaping (Result<ChatCompletionsCreated, Error>) -> Void
     ) {
-        let parameters = ChatCompletion.Parameters(
+        let parameters = CreateChatCompletion.Parameters(
             model: model.rawValue,
             messages: messages,
             temperature: temperature,
@@ -49,6 +49,6 @@ public final class ChatApi: ApiQueryable {
             frequencyPenalty: frequencyPenalty,
             user: user
         )
-        openAiDataTask(urlSession: urlSession, endPoint: .chat(.chatCompletion), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)
+        openAiDataTask(urlSession: urlSession, endPoint: .chat(.createChatCompletion), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)
     }
 }

@@ -19,8 +19,8 @@ extension ChatApi {
     ///
     /// - Returns: Async ``ChatCompletionsCreated``
     public func createChatCompletion(
-        model: ChatCompletion.Model = .gpt35Turbo,
-        messages: [ChatCompletion.Message],
+        model: CreateChatCompletion.Model = .gpt35Turbo,
+        messages: [CreateChatCompletion.Message],
         temperature: Int? = 1,
         topP: Int? = 1,
         n: Int? = 1,

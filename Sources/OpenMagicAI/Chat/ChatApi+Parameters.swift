@@ -8,7 +8,7 @@
 import Foundation
 
 extension ChatApi {
-    public enum ChatCompletion {
+    public enum CreateChatCompletion {
         public enum Model: String {
             case gpt35Turbo = "gpt-3.5-turbo"
             case gpt35Turbo0301 = "gpt-3.5-turbo-0301"

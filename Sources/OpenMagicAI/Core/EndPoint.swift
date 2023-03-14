@@ -70,7 +70,7 @@ extension EndPoint {
     }
 
     enum Chat: EndpointPathQueryable {
-        case chatCompletion
+        case createChatCompletion
     }
 
 }
