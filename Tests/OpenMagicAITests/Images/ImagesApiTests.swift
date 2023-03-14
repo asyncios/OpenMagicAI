@@ -68,7 +68,7 @@ extension ImagesApiTests {
         let expectation: XCTestExpectation = .init(description: "testCreateImageFurure")
         var result: ImagesCreated?
         // Case
-        sut.createImageFuture(prompt: "").sink { result in
+        sut.createImageFuture(prompt: "test").sink { result in
             if case .finished = result {
                 expectation.fulfill()
             }

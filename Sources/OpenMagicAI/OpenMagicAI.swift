@@ -27,6 +27,11 @@ public final class OpenMagicAI {
         .init(apiKey: apiKey)
     }()
 
+    /// Get a vector representation of a given input that can be easily consumed by machine learning models and algorithms.
+    public private(set) lazy var embeddings: EmbeddingsApi = {
+        .init(apiKey: apiKey)
+    }()
+
     private let apiKey: String
     public init(apiKey: String) {
         self.apiKey = apiKey

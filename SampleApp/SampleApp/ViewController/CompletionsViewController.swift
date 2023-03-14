@@ -36,10 +36,12 @@ final class CompletionsViewController: ItemViewController {
             return
         }
         view.endEditing(true)
+        resultTextView.text = ""
         showLoadingView()
         openMagicAI.completions.createCompletion(prompt: prompt) { [weak self] result in
             DispatchQueue.main.async {
                 self?.hideLoadingView()
+                self?.display(result: result)
             }
             debugPrint(result)
         }

@@ -14,6 +14,7 @@ enum EndPoint: EndpointQueryable {
     case edits(Edits)
     case models(Models)
     case chat(Chat)
+    case embeddings(Embeddings)
 
     var url: URL {
         switch self {
@@ -26,6 +27,8 @@ enum EndPoint: EndpointQueryable {
         case .models(let value):
             return value.url
         case .chat(let value):
+            return value.url
+        case .embeddings(let value):
             return value.url
         }
     }
@@ -41,6 +44,8 @@ enum EndPoint: EndpointQueryable {
         case .models(let value):
             return value.method
         case .chat(let value):
+            return value.method
+        case .embeddings(let value):
             return value.method
         }
     }
@@ -73,6 +78,9 @@ extension EndPoint {
         case createChatCompletion
     }
 
+    enum Embeddings: EndpointPathQueryable {
+        case createEmbeddings
+    }
 }
 
 extension EndpointPathQueryable {

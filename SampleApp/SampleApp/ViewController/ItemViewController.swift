@@ -12,6 +12,7 @@ class ItemViewController: UIViewController, Loadable {
 
     @IBOutlet var inputTextFields: [UITextField]!
     @IBOutlet var buttons: [UIButton]!
+    @IBOutlet var resultTextView: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,23 @@ class ItemViewController: UIViewController, Loadable {
     }
 
     @IBAction func secondOnTouch(_ sender: Any) {
+    }
+
+    func display<T: Codable, E: Error>(result: Result<T, E>) {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        switch result {
+        case .success(let success):
+            do {
+                let data = try encoder.encode(success)
+                let string = String(data: data, encoding: .utf8)
+                resultTextView.text = string
+            } catch {
+                resultTextView.text = "\(error)"
+            }
+        case .failure(let failure):
+            resultTextView.text = "\(failure)"
+        }
     }
 
     private func addGestureForDismiss() {
