@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class EmbeddingsApi: ApiQueryable {
+public final class EmbeddingsApi: ApiQueryable {
     private let apiKey: String
     private let urlSession: URLSession
     init(apiKey: String, urlSession: URLSession = .shared) {
@@ -15,7 +15,14 @@ final class EmbeddingsApi: ApiQueryable {
         self.urlSession = urlSession
     }
 
-    func createEmbeddings(
+    /// Creates an embedding vector representing the input text.
+    ///
+    /// - Parameters:
+    ///   - model: String
+    ///   - input: String
+    ///   - user: String (optional)
+    ///   - onCompletion: ``EmbeddingsCreated``
+    public func createEmbeddings(
         model: OpenMagicModel.Embeddings = .textEmbeddingAda002,
         input: String,
         user: String? = nil,
