@@ -28,7 +28,7 @@ final class CompletionsApiTests: XCTestCase {
     func testCreateCompletion() async throws -> Void {
         // Given
         let path = EndPoint.completions(.createCompletion).url.path
-        let mock = try Mocks.createCompletion.getMock(type: Completions.self)
+        let mock = try Mocks.createCompletion.getMock(type: CompletionsCreated.self)
         MockURLProtocol.mockData[path] = mock.1
         // Case
         let expectation: XCTestExpectation = .init(description: "testCreateCompletion")
@@ -49,7 +49,7 @@ extension CompletionsApiTests {
     func testCreateCompletionAsync() async throws -> Void {
         // Given
         let path = EndPoint.completions(.createCompletion).url.path
-        let mock = try Mocks.createCompletion.getMock(type: Completions.self)
+        let mock = try Mocks.createCompletion.getMock(type: CompletionsCreated.self)
         MockURLProtocol.mockData[path] = mock.1
         // Case
         let result = try await self.sut.createCompletion(prompt: "test")
@@ -63,10 +63,10 @@ extension CompletionsApiTests {
     func testCreateCompletionFuture() async throws -> Void {
         // Given
         let path = EndPoint.completions(.createCompletion).url.path
-        let mock = try Mocks.createCompletion.getMock(type: Completions.self)
+        let mock = try Mocks.createCompletion.getMock(type: CompletionsCreated.self)
         MockURLProtocol.mockData[path] = mock.1
         let expectation: XCTestExpectation = .init(description: "testCreateCompletionFuture")
-        var result: Completions?
+        var result: CompletionsCreated?
         // Case
         sut.createCompletionFuture(prompt: "").sink { result in
             if case .finished = result {

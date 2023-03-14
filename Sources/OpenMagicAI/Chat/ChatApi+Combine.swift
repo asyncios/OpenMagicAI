@@ -17,8 +17,8 @@ extension ChatApi {
     ///   - model: String
     ///   - messages: array of message
     ///
-    /// - Returns: Future ``ChatCompletions``
-    public func chatCompletionFuture(
+    /// - Returns: Future ``ChatCompletionsCreated``
+    public func createChatCompletionFuture(
         model: ChatCompletion.Model = .gpt35Turbo,
         messages: [ChatCompletion.Message],
         temperature: Int? = 1,
@@ -30,9 +30,9 @@ extension ChatApi {
         presencePenalty: Int? = 0,
         frequencyPenalty: Int? = 0,
         user: String? = nil
-    ) -> Future<ChatCompletions, Error> {
-        Future<ChatCompletions, Error> { promise in
-            self.chatCompletion(
+    ) -> Future<ChatCompletionsCreated, Error> {
+        Future<ChatCompletionsCreated, Error> { promise in
+            self.createChatCompletion(
                 model: model,
                 messages: messages,
                 temperature: temperature,

@@ -16,15 +16,15 @@ extension ImagesApi {
     /// - Parameters:
     ///   - prompt: String
     ///
-    /// - Returns: Future ``Images``
+    /// - Returns: Future ``ImagesCreated``
     public func createImageFuture(
         prompt: String,
         n: Int = 1,
         size: ImageSize = .init(width: 256, height: 256),
         responseFormat: ResponseFormat? = .url,
         user: String? = nil
-    ) -> Future<Images, Error> {
-        Future<Images, Error> { promise in
+    ) -> Future<ImagesCreated, Error> {
+        Future<ImagesCreated, Error> { promise in
             self.createImage(
                 prompt: prompt,
                 n: n,

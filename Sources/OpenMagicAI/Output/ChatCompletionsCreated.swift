@@ -1,5 +1,5 @@
 //
-//  Chat.swift
+//  ChatCompletionsCreated.swift
 //  
 //
 //  Created by admin on 9/03/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct ChatCompletions: Codable {
+public struct ChatCompletionsCreated: Codable {
     public let id: String
     public let object: String
     public let created: Int
@@ -15,7 +15,7 @@ public struct ChatCompletions: Codable {
     public let usage: Usage
 }
 
-extension ChatCompletions {
+extension ChatCompletionsCreated {
 
     public struct Choice: Codable {
         public let index: Int

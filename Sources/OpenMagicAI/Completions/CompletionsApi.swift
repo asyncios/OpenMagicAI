@@ -19,7 +19,7 @@ public final class CompletionsApi: ApiQueryable {
     ///
     /// - Parameters:
     ///   - prompt: String
-    ///   - onCompletion: ``Completions``
+    ///   - onCompletion: ``CompletionsCreated``
     public func createCompletion(
         model: OpenMagicModel = .chatGPT35(.textDavinci003),
         prompt: String,
@@ -36,7 +36,7 @@ public final class CompletionsApi: ApiQueryable {
         frequencyPenalty: Int? = 0,
         bestOf: Int? = 1,
         user: String? = nil,
-        onCompletion: @escaping (Result<Completions, Error>) -> Void
+        onCompletion: @escaping (Result<CompletionsCreated, Error>) -> Void
     ) {
         let parameters = CreateCompletion.Parameters(
             model: model.rawValue,

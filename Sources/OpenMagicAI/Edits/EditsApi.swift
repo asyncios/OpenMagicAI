@@ -21,7 +21,7 @@ public final class EditsApi: ApiQueryable {
     ///   - model: String
     ///   - input: String (optional)
     ///   - instruction: String
-    ///   - onCompletion: ``Edits``
+    ///   - onCompletion: ``EditsCreated``
     public func createEdit(
         model: CreateEdit.Model = .textDavinciEdit001,
         input: String = "",
@@ -29,7 +29,7 @@ public final class EditsApi: ApiQueryable {
         n: Int? = 1,
         temperature: Int? = 1,
         topP: Int? = 1,
-        onCompletion: @escaping (Result<Edits, Error>) -> Void
+        onCompletion: @escaping (Result<EditsCreated, Error>) -> Void
     ) {
         let parameters = CreateEdit.Parameters(
             model: model.rawValue,

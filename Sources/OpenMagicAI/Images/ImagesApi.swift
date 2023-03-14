@@ -20,14 +20,14 @@ public final class ImagesApi: ApiQueryable {
     ///
     /// - Parameters:
     ///   - prompt: String
-    ///   - onCompletion: ``Images``
+    ///   - onCompletion: ``ImagesCreated``
     public func createImage(
         prompt: String,
         n: Int = 1,
         size: ImageSize = .init(width: 256, height: 256),
         responseFormat: ResponseFormat? = .url,
         user: String? = nil,
-        onCompletion: @escaping (Result<Images, Error>) -> Void
+        onCompletion: @escaping (Result<ImagesCreated, Error>) -> Void
     ) {
         let parameters = CreateImage(
             prompt: prompt,

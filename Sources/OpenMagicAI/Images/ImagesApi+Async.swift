@@ -15,13 +15,13 @@ extension ImagesApi {
     /// - Parameters:
     ///   - prompt: String
     ///
-    /// - Returns: Async ``Images``
+    /// - Returns: Async ``ImagesCreated``
     public func createImage(
         prompt: String,
         n: Int = 1,
         size: ImageSize = .init(width: 256, height: 256),
         user: String? = nil
-    ) async throws -> Images {
+    ) async throws -> ImagesCreated {
         return try await withCheckedThrowingContinuation { continuation in
             createImage(
                 prompt: prompt,

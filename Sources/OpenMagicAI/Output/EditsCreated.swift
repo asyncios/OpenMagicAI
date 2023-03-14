@@ -1,5 +1,5 @@
 //
-//  OpenMagic+Edits.swift
+//  EditsCreated.swift
 //  OpenMagicAI
 //
 //  Created by admin on 6/03/23.
@@ -7,14 +7,14 @@
 
 import Foundation
 
-public struct Edits: Codable {
+public struct EditsCreated: Codable {
     public let object: String
     public let created: Int
     public let choices: [Choice]
     public let usage: Usage
 }
 
-extension Edits {
+extension EditsCreated {
 
     public struct Choice: Codable {
         public let text: String

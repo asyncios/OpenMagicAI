@@ -26,7 +26,7 @@ final class ChatViewController: UIViewController, Loadable {
         }
         showLoadingView()
         appendMessages([.init(role: "user", message: content)])
-        openMagicAI.chat.chatCompletion(messages: [.init(role: .user, content: content)]) { [weak self] result in
+        openMagicAI.chat.createChatCompletion(messages: [.init(role: .user, content: content)]) { [weak self] result in
             DispatchQueue.main.async {
                 self?.hideLoadingView()
                 if case .success(let value) = result {

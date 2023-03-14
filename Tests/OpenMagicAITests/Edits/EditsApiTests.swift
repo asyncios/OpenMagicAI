@@ -28,7 +28,7 @@ final class EditsApiTests: XCTestCase {
     func testCreateEdit() throws {
         // Given
         let path = EndPoint.edits(.createEdit).url.path
-        let mock = try Mocks.createEdit.getMock(type: Edits.self)
+        let mock = try Mocks.createEdit.getMock(type: EditsCreated.self)
         MockURLProtocol.mockData[path] = mock.1
         let expectation: XCTestExpectation = .init(description: "testCreateEdit")
         // Case
@@ -49,7 +49,7 @@ extension EditsApiTests {
     func testCreateEditAsync() async throws -> Void {
         // Given
         let path = EndPoint.edits(.createEdit).url.path
-        let mock = try Mocks.createEdit.getMock(type: Edits.self)
+        let mock = try Mocks.createEdit.getMock(type: EditsCreated.self)
         MockURLProtocol.mockData[path] = mock.1
         // Case
         let result = try await self.sut.createEdit(instruction: "test")
@@ -63,10 +63,10 @@ extension EditsApiTests {
     func testCreateEditFuture() async throws -> Void {
         // Given
         let path = EndPoint.edits(.createEdit).url.path
-        let mock = try Mocks.createEdit.getMock(type: Edits.self)
+        let mock = try Mocks.createEdit.getMock(type: EditsCreated.self)
         MockURLProtocol.mockData[path] = mock.1
         let expectation: XCTestExpectation = .init(description: "testCreateEditFuture")
-        var result: Edits?
+        var result: EditsCreated?
         // Case
         sut.createEditFuture(instruction: "").sink { result in
             if case .finished = result {

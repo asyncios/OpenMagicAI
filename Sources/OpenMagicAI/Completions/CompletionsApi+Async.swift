@@ -15,7 +15,7 @@ extension CompletionsApi {
     /// - Parameters:
     ///   - prompt: String
     ///
-    /// - Returns: Async ``Completions``
+    /// - Returns: Async ``CompletionsCreated``
     public func createCompletion(
         model: OpenMagicModel = .chatGPT35(.textDavinci003),
         prompt: String,
@@ -32,7 +32,7 @@ extension CompletionsApi {
         frequencyPenalty: Int? = 0,
         bestOf: Int? = 1,
         user: String? = nil
-    ) async throws -> Completions {
+    ) async throws -> CompletionsCreated {
         return try await withCheckedThrowingContinuation { continuation in
             createCompletion(
                 model: model,

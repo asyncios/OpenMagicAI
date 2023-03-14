@@ -17,8 +17,8 @@ extension ChatApi {
     ///   - model: String
     ///   - messages: array of message
     ///
-    /// - Returns: Async ``ChatCompletions``
-    public func chatCompletion(
+    /// - Returns: Async ``ChatCompletionsCreated``
+    public func createChatCompletion(
         model: ChatCompletion.Model = .gpt35Turbo,
         messages: [ChatCompletion.Message],
         temperature: Int? = 1,
@@ -30,9 +30,9 @@ extension ChatApi {
         presencePenalty: Int? = 0,
         frequencyPenalty: Int? = 0,
         user: String? = nil
-    ) async throws -> ChatCompletions {
+    ) async throws -> ChatCompletionsCreated {
         return try await withCheckedThrowingContinuation { continuation in
-            chatCompletion(
+            createChatCompletion(
                 model: model,
                 messages: messages,
                 temperature: temperature,

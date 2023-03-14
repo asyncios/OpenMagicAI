@@ -18,7 +18,7 @@ extension EditsApi {
     ///   - input: String (optional)
     ///   - instruction: String
     ///
-    /// - Returns: Future ``Edits``
+    /// - Returns: Future ``EditsCreated``
     public func createEditFuture(
         model: CreateEdit.Model = .textDavinciEdit001,
         input: String = "",
@@ -26,8 +26,8 @@ extension EditsApi {
         n: Int? = 1,
         temperature: Int? = 1,
         topP: Int? = 1
-    ) -> Future<Edits, Error> {
-        Future<Edits, Error> { promise in
+    ) -> Future<EditsCreated, Error> {
+        Future<EditsCreated, Error> { promise in
             self.createEdit(
                 model: model,
                 input: input,
