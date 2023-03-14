@@ -1,5 +1,5 @@
 //
-//  OpenMagic+Images.swift
+//  ImagesCreated.swift
 //  OpenMagicAI
 //
 //  Created by admin on 6/03/23.
@@ -7,12 +7,12 @@
 
 import Foundation
 
-public struct Images: Codable {
+public struct ImagesCreated: Codable {
     public let created: Int
     public let data: [Photo]
 }
 
-extension Images {
+extension ImagesCreated {
 
     public struct Photo: Codable {
         public let url: String

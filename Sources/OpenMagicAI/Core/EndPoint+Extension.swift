@@ -86,13 +86,13 @@ extension EndPoint.Models {
 extension EndPoint.Chat {
     var path: String? {
         switch self {
-        case .chatCompletion:
+        case .createChatCompletion:
             return "chat/completions"
         }
     }
     var method: String? {
         switch self {
-        case .chatCompletion:
+        case .createChatCompletion:
             return "POST"
         }
     }

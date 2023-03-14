@@ -16,7 +16,7 @@ extension CompletionsApi {
     /// - Parameters:
     ///   - prompt: String
     ///
-    /// - Returns: Future ``Completions``
+    /// - Returns: Future ``CompletionsCreated``
     public func createCompletionFuture(
         model: OpenMagicModel = .chatGPT35(.textDavinci003),
         prompt: String,
@@ -33,8 +33,8 @@ extension CompletionsApi {
         frequencyPenalty: Int? = 0,
         bestOf: Int? = 1,
         user: String? = nil
-    ) -> Future<Completions, Error> {
-        Future<Completions, Error> { promise in
+    ) -> Future<CompletionsCreated, Error> {
+        Future<CompletionsCreated, Error> { promise in
             self.createCompletion(
                 model: model,
                 prompt: prompt,

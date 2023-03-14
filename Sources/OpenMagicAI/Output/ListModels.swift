@@ -1,5 +1,5 @@
 //
-//  OpenMagic+Models.swift
+//  ListModels.swift
 //  OpenMagicAI
 //
 //  Created by admin on 7/03/23.

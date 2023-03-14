@@ -28,7 +28,7 @@ final class ImagesApiTests: XCTestCase {
     func testCreateImage() throws {
         // Given
         let path = EndPoint.images(.createEdit).url.path
-        let mock = try Mocks.createImage.getMock(type: Images.self)
+        let mock = try Mocks.createImage.getMock(type: ImagesCreated.self)
         MockURLProtocol.mockData[path] = mock.1
         let expecation: XCTestExpectation = .init(description: "testCreateImage")
         // Case
@@ -49,7 +49,7 @@ extension ImagesApiTests {
     func testCreateImageAsync() async throws -> Void {
         // Given
         let path = EndPoint.images(.createEdit).url.path
-        let mock = try Mocks.createImage.getMock(type: Images.self)
+        let mock = try Mocks.createImage.getMock(type: ImagesCreated.self)
         MockURLProtocol.mockData[path] = mock.1
         // Case
         let result = try await sut.createImage(prompt: "test")
@@ -63,10 +63,10 @@ extension ImagesApiTests {
     func testCreateImageFurure() async throws -> Void {
         // Given
         let path = EndPoint.images(.createEdit).url.path
-        let mock = try Mocks.createImage.getMock(type: Images.self)
+        let mock = try Mocks.createImage.getMock(type: ImagesCreated.self)
         MockURLProtocol.mockData[path] = mock.1
         let expectation: XCTestExpectation = .init(description: "testCreateImageFurure")
-        var result: Images?
+        var result: ImagesCreated?
         // Case
         sut.createImageFuture(prompt: "").sink { result in
             if case .finished = result {

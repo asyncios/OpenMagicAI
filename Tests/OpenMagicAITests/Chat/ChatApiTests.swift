@@ -25,14 +25,14 @@ final class ChatApiTests: XCTestCase {
         cancellables.removeAll()
     }
 
-    func testChatCompletion() async throws -> Void {
+    func testCreateChatCompletion() async throws -> Void {
         // Given
-        let path = EndPoint.chat(.chatCompletion).url.path
-        let mock = try Mocks.chatCompletion.getMock(type: ChatCompletions.self)
+        let path = EndPoint.chat(.createChatCompletion).url.path
+        let mock = try Mocks.chatCompletion.getMock(type: ChatCompletionsCreated.self)
         MockURLProtocol.mockData[path] = mock.1
         // Case
-        let expectation: XCTestExpectation = .init(description: "testChatCompletion")
-        sut.chatCompletion(messages: []) { result in
+        let expectation: XCTestExpectation = .init(description: "testCreateChatCompletion")
+        sut.createChatCompletion(messages: []) { result in
             if case .success(let success) = result,
                success.object == mock.0.object {
                 expectation.fulfill()
@@ -46,13 +46,13 @@ final class ChatApiTests: XCTestCase {
 
 // MARK: Async
 extension ChatApiTests {
-    func testChatCompletionAsync() async throws -> Void {
+    func testCreateChatCompletionAsync() async throws -> Void {
         // Given
-        let path = EndPoint.chat(.chatCompletion).url.path
-        let mock = try Mocks.chatCompletion.getMock(type: ChatCompletions.self)
+        let path = EndPoint.chat(.createChatCompletion).url.path
+        let mock = try Mocks.chatCompletion.getMock(type: ChatCompletionsCreated.self)
         MockURLProtocol.mockData[path] = mock.1
         // Case
-        let result = try await self.sut.chatCompletion(messages: [])
+        let result = try await self.sut.createChatCompletion(messages: [])
         // Then
         XCTAssertEqual(mock.0.object, result.object)
     }
@@ -60,15 +60,15 @@ extension ChatApiTests {
 
 // MARK: Combine
 extension ChatApiTests {
-    func testChatCompletionFuture() async throws -> Void {
+    func testCreateChatCompletionFuture() async throws -> Void {
         // Given
-        let path = EndPoint.chat(.chatCompletion).url.path
-        let mock = try Mocks.chatCompletion.getMock(type: ChatCompletions.self)
+        let path = EndPoint.chat(.createChatCompletion).url.path
+        let mock = try Mocks.chatCompletion.getMock(type: ChatCompletionsCreated.self)
         MockURLProtocol.mockData[path] = mock.1
-        let expectation: XCTestExpectation = .init(description: "testChatCompletionFuture")
-        var result: ChatCompletions?
+        let expectation: XCTestExpectation = .init(description: "testCreateChatCompletionFuture")
+        var result: ChatCompletionsCreated?
         // Case
-        sut.chatCompletionFuture(messages: []).sink { result in
+        sut.createChatCompletionFuture(messages: []).sink { result in
             if case .finished = result {
                 expectation.fulfill()
             }

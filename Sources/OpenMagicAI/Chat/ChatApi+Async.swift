@@ -17,10 +17,10 @@ extension ChatApi {
     ///   - model: String
     ///   - messages: array of message
     ///
-    /// - Returns: Async ``ChatCompletions``
-    public func chatCompletion(
-        model: ChatCompletion.Model = .gpt35Turbo,
-        messages: [ChatCompletion.Message],
+    /// - Returns: Async ``ChatCompletionsCreated``
+    public func createChatCompletion(
+        model: CreateChatCompletion.Model = .gpt35Turbo,
+        messages: [CreateChatCompletion.Message],
         temperature: Int? = 1,
         topP: Int? = 1,
         n: Int? = 1,
@@ -30,9 +30,9 @@ extension ChatApi {
         presencePenalty: Int? = 0,
         frequencyPenalty: Int? = 0,
         user: String? = nil
-    ) async throws -> ChatCompletions {
+    ) async throws -> ChatCompletionsCreated {
         return try await withCheckedThrowingContinuation { continuation in
-            chatCompletion(
+            createChatCompletion(
                 model: model,
                 messages: messages,
                 temperature: temperature,

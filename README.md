@@ -44,7 +44,7 @@ There's a sample app [here](https://github.com/asyncios/OpenMagicAI/tree/master/
 
 ```swift
 dependencies: [ 
-  .package(url: "https://github.com/asyncios/OpenMagicAI.git", from: "1.0.0") 
+  .package(url: "https://github.com/asyncios/OpenMagicAI.git", from: "1.0.1") 
  ]
 ```
 

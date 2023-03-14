@@ -21,10 +21,10 @@ public final class ChatApi: ApiQueryable {
     /// - Parameters:
     ///   - model: String
     ///   - messages: array of message
-    ///   - onCompletion: ``ChatCompletions``
-    public func chatCompletion(
-        model: ChatCompletion.Model = .gpt35Turbo,
-        messages: [ChatCompletion.Message],
+    ///   - onCompletion: ``ChatCompletionsCreated``
+    public func createChatCompletion(
+        model: CreateChatCompletion.Model = .gpt35Turbo,
+        messages: [CreateChatCompletion.Message],
         temperature: Int? = 1,
         topP: Int? = 1,
         n: Int? = 1,
@@ -34,9 +34,9 @@ public final class ChatApi: ApiQueryable {
         presencePenalty: Int? = 0,
         frequencyPenalty: Int? = 0,
         user: String? = nil,
-        onCompletion: @escaping (Result<ChatCompletions, Error>) -> Void
+        onCompletion: @escaping (Result<ChatCompletionsCreated, Error>) -> Void
     ) {
-        let parameters = ChatCompletion.Parameters(
+        let parameters = CreateChatCompletion.Parameters(
             model: model.rawValue,
             messages: messages,
             temperature: temperature,
@@ -49,6 +49,6 @@ public final class ChatApi: ApiQueryable {
             frequencyPenalty: frequencyPenalty,
             user: user
         )
-        openAiDataTask(urlSession: urlSession, endPoint: .chat(.chatCompletion), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)
+        openAiDataTask(urlSession: urlSession, endPoint: .chat(.createChatCompletion), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)
     }
 }

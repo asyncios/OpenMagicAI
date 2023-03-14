@@ -17,7 +17,7 @@ extension EditsApi {
     ///   - input: String (optional)
     ///   - instruction: String
     ///
-    /// - Returns: Async ``Edits``
+    /// - Returns: Async ``EditsCreated``
     public func createEdit(
         model: CreateEdit.Model = .textDavinciEdit001,
         input: String = "",
@@ -25,7 +25,7 @@ extension EditsApi {
         n: Int? = 1,
         temperature: Int? = 1,
         topP: Int? = 1
-    ) async throws -> Edits {
+    ) async throws -> EditsCreated {
         return try await withCheckedThrowingContinuation { continuation in
             createEdit(
                 model: model,
