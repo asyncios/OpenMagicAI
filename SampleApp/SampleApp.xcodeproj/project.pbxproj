@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84130D7329C0B39A00BE325B /* EmbeddingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84130D7229C0B39A00BE325B /* EmbeddingsViewController.swift */; };
+		84130D7629C0B45C00BE325B /* OpenMagicAI in Frameworks */ = {isa = PBXBuildFile; productRef = 84130D7529C0B45C00BE325B /* OpenMagicAI */; };
 		84A19C8829BC2BD000FF6D79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A19C8729BC2BD000FF6D79 /* AppDelegate.swift */; };
 		84A19C8A29BC2BD000FF6D79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A19C8929BC2BD000FF6D79 /* SceneDelegate.swift */; };
 		84A19C8F29BC2BD000FF6D79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A19C8D29BC2BD000FF6D79 /* Main.storyboard */; };
@@ -36,7 +38,6 @@
 		84A19CEE29BC2C8500FF6D79 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A19CDB29BC2C8500FF6D79 /* Loadable.swift */; };
 		84A19CEF29BC2C8500FF6D79 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A19CDC29BC2C8500FF6D79 /* LoadingView.swift */; };
 		84A19CF029BC2C8500FF6D79 /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A19CDD29BC2C8500FF6D79 /* RootTabBarViewController.swift */; };
-		84A19CF329BC2CB700FF6D79 /* OpenMagicAI in Frameworks */ = {isa = PBXBuildFile; productRef = 84A19CF229BC2CB700FF6D79 /* OpenMagicAI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84130D7229C0B39A00BE325B /* EmbeddingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddingsViewController.swift; sourceTree = "<group>"; };
+		84130D7429C0B3C800BE325B /* OpenMagicAI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OpenMagicAI; path = ..; sourceTree = "<group>"; };
 		84A19C8429BC2BD000FF6D79 /* SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A19C8729BC2BD000FF6D79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84A19C8929BC2BD000FF6D79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,7 +72,6 @@
 		84A19CA429BC2BD000FF6D79 /* SampleAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A19CA829BC2BD100FF6D79 /* SampleAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppUITests.swift; sourceTree = "<group>"; };
 		84A19CAA29BC2BD100FF6D79 /* SampleAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		84A19CB729BC2C0100FF6D79 /* OpenMagicAI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OpenMagicAI; path = ..; sourceTree = "<group>"; };
 		84A19CC329BC2C6F00FF6D79 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		84A19CC429BC2C6F00FF6D79 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		84A19CC829BC2C8500FF6D79 /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
@@ -98,7 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84A19CF329BC2CB700FF6D79 /* OpenMagicAI in Frameworks */,
+				84130D7629C0B45C00BE325B /* OpenMagicAI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +124,7 @@
 		84A19C7B29BC2BD000FF6D79 = {
 			isa = PBXGroup;
 			children = (
-				84A19CB729BC2C0100FF6D79 /* OpenMagicAI */,
+				84130D7429C0B3C800BE325B /* OpenMagicAI */,
 				84A19C8629BC2BD000FF6D79 /* SampleApp */,
 				84A19C9D29BC2BD000FF6D79 /* SampleAppTests */,
 				84A19CA729BC2BD000FF6D79 /* SampleAppUITests */,
@@ -196,17 +198,18 @@
 		84A19CC929BC2C8500FF6D79 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				84A19CCA29BC2C8500FF6D79 /* ChatViewController.swift */,
-				84A19CCB29BC2C8500FF6D79 /* ImageItemViewController.swift */,
-				84A19CCC29BC2C8500FF6D79 /* ModelsViewController.swift */,
-				84A19CCD29BC2C8500FF6D79 /* ImageItemViewController.xib */,
-				84A19CCE29BC2C8500FF6D79 /* CompletionsViewController.swift */,
-				84A19CCF29BC2C8500FF6D79 /* ImagesViewController.swift */,
-				84A19CD029BC2C8500FF6D79 /* ChatViewController.xib */,
-				84A19CD129BC2C8500FF6D79 /* EditsViewController.swift */,
 				84A19CD229BC2C8500FF6D79 /* Cell */,
-				84A19CD829BC2C8500FF6D79 /* ItemViewController.xib */,
+				84A19CCA29BC2C8500FF6D79 /* ChatViewController.swift */,
+				84A19CD029BC2C8500FF6D79 /* ChatViewController.xib */,
+				84A19CCE29BC2C8500FF6D79 /* CompletionsViewController.swift */,
+				84A19CD129BC2C8500FF6D79 /* EditsViewController.swift */,
+				84130D7229C0B39A00BE325B /* EmbeddingsViewController.swift */,
+				84A19CCB29BC2C8500FF6D79 /* ImageItemViewController.swift */,
+				84A19CCD29BC2C8500FF6D79 /* ImageItemViewController.xib */,
+				84A19CCF29BC2C8500FF6D79 /* ImagesViewController.swift */,
 				84A19CD929BC2C8500FF6D79 /* ItemViewController.swift */,
+				84A19CD829BC2C8500FF6D79 /* ItemViewController.xib */,
+				84A19CCC29BC2C8500FF6D79 /* ModelsViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -256,7 +259,7 @@
 			);
 			name = SampleApp;
 			packageProductDependencies = (
-				84A19CF229BC2CB700FF6D79 /* OpenMagicAI */,
+				84130D7529C0B45C00BE325B /* OpenMagicAI */,
 			);
 			productName = SampleApp;
 			productReference = 84A19C8429BC2BD000FF6D79 /* SampleApp.app */;
@@ -393,6 +396,7 @@
 				84A19CE629BC2C8500FF6D79 /* EditsViewController.swift in Sources */,
 				84A19CE829BC2C8500FF6D79 /* UserChatTableViewCell.swift in Sources */,
 				84A19CDE29BC2C8500FF6D79 /* ChatMessage.swift in Sources */,
+				84130D7329C0B39A00BE325B /* EmbeddingsViewController.swift in Sources */,
 				84A19CC529BC2C6F00FF6D79 /* UIViewController.swift in Sources */,
 				84A19C8A29BC2BD000FF6D79 /* SceneDelegate.swift in Sources */,
 				84A19CEF29BC2C8500FF6D79 /* LoadingView.swift in Sources */,
@@ -733,7 +737,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		84A19CF229BC2CB700FF6D79 /* OpenMagicAI */ = {
+		84130D7529C0B45C00BE325B /* OpenMagicAI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = OpenMagicAI;
 		};

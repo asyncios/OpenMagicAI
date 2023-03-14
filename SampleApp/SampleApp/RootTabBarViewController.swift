@@ -44,6 +44,13 @@ final class RootTabBarViewController: UITabBarController {
         return viewController
     }()
 
+    private lazy var embeddingsViewController: EmbeddingsViewController = {
+        let viewController = EmbeddingsViewController()
+        viewController.tabBarItem.title = "Embeddings"
+        viewController.tabBarItem.image = .init(systemName: "scale.3d")
+        return viewController
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         viewControllers = [
@@ -51,7 +58,8 @@ final class RootTabBarViewController: UITabBarController {
             imagesViewController,
             chatViewController,
             modelsViewController,
-            editsViewController
+            editsViewController,
+            embeddingsViewController
         ]
     }
 
