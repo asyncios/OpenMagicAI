@@ -24,6 +24,7 @@ final class ChatViewController: UIViewController, Loadable {
         guard let content = getInputValidated(messageTextField) else {
             return
         }
+        messageTextField.text = ""
         showLoadingView()
         appendMessages([.init(role: "user", message: content)])
         openMagicAI.chat.createChatCompletion(messages: [.init(role: .user, content: content)]) { [weak self] result in
