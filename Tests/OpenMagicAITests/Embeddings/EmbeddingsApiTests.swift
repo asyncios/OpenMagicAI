@@ -1,17 +1,17 @@
 //
-//  CompletionsApiTests.swift
+//  EmbeddingsApiTests.swift
 //  
 //
-//  Created by admin on 7/03/23.
+//  Created by admin on 14/03/23.
 //
 
 import XCTest
 import Combine
 @testable import OpenMagicAI
 
-final class CompletionsApiTests: XCTestCase {
+final class EmbeddingsApiTests: XCTestCase {
 
-    private var sut: CompletionsApi!
+    private var sut: EmbeddingsApi!
     private var cancellables: Set<AnyCancellable> = []
 
     override func setUpWithError() throws {
@@ -25,14 +25,14 @@ final class CompletionsApiTests: XCTestCase {
         cancellables.removeAll()
     }
 
-    func testCreateCompletion() async throws -> Void {
+    func testCreateEmbeddings() async throws -> Void {
         // Given
-        let path = EndPoint.completions(.createCompletion).url.path
-        let mock = try Mocks.createCompletion.getMock(type: CompletionsCreated.self)
+        let path = EndPoint.embeddings(.createEmbeddings).url.path
+        let mock = try Mocks.createEmbeddings.getMock(type: EmbeddingsCreated.self)
         MockURLProtocol.mockData[path] = mock.1
         // Case
-        let expectation: XCTestExpectation = .init(description: "testCreateCompletion")
-        sut.createCompletion(prompt: "test") { result in
+        let expectation: XCTestExpectation = .init(description: "testCreateEmbeddings")
+        sut.createEmbeddings(input: "test") { result in
             if case .success(let success) = result,
                success.object == mock.0.object {
                 expectation.fulfill()
@@ -41,34 +41,33 @@ final class CompletionsApiTests: XCTestCase {
         // Then
         wait(for: [expectation], timeout: 1)
     }
-
 }
 
 // MARK: Async
-extension CompletionsApiTests {
-    func testCreateCompletionAsync() async throws -> Void {
+extension EmbeddingsApiTests {
+    func testCreateEmbeddingsAsync() async throws -> Void {
         // Given
-        let path = EndPoint.completions(.createCompletion).url.path
-        let mock = try Mocks.createCompletion.getMock(type: CompletionsCreated.self)
+        let path = EndPoint.embeddings(.createEmbeddings).url.path
+        let mock = try Mocks.createEmbeddings.getMock(type: EmbeddingsCreated.self)
         MockURLProtocol.mockData[path] = mock.1
         // Case
-        let result = try await self.sut.createCompletion(prompt: "test")
+        let result = try await self.sut.createEmbeddings(input: "test")
         // Then
         XCTAssertEqual(mock.0.object, result.object)
     }
 }
 
 // MARK: Combine
-extension CompletionsApiTests {
-    func testCreateCompletionFuture() async throws -> Void {
+extension EmbeddingsApiTests {
+    func testCreateEmbeddingsFuture() async throws -> Void {
         // Given
-        let path = EndPoint.completions(.createCompletion).url.path
-        let mock = try Mocks.createCompletion.getMock(type: CompletionsCreated.self)
+        let path = EndPoint.embeddings(.createEmbeddings).url.path
+        let mock = try Mocks.createEmbeddings.getMock(type: EmbeddingsCreated.self)
         MockURLProtocol.mockData[path] = mock.1
-        let expectation: XCTestExpectation = .init(description: "testCreateCompletionFuture")
-        var result: CompletionsCreated?
+        let expectation: XCTestExpectation = .init(description: "testCreateEmbeddingsFuture")
+        var result: EmbeddingsCreated?
         // Case
-        sut.createCompletionFuture(prompt: "test").sink { result in
+        sut.createEmbeddingsFuture(input: "test").sink { result in
             if case .finished = result {
                 expectation.fulfill()
             }

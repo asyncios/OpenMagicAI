@@ -100,3 +100,21 @@ extension EndPoint.Chat {
         return nil
     }
 }
+
+extension EndPoint.Embeddings {
+    var path: String? {
+        switch self {
+        case .createEmbeddings:
+            return nil
+        }
+    }
+    var method: String? {
+        switch self {
+        case .createEmbeddings:
+            return "POST"
+        }
+    }
+    static var basePath: String? {
+        return "embeddings"
+    }
+}

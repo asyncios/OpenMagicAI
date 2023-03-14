@@ -11,6 +11,7 @@ public enum OpenMagicModel {
     case chatGPT35(ChatGPT35)
     case codex(Codex)
     case chatGPT3(ChatGPT3)
+    case embeddings(Embeddings)
     public var rawValue: String {
         switch self {
         case .chatGPT35(let value):
@@ -18,6 +19,8 @@ public enum OpenMagicModel {
         case .codex(let value):
             return value.rawValue
         case .chatGPT3(let value):
+            return value.rawValue
+        case .embeddings(let value):
             return value.rawValue
         }
     }
@@ -44,6 +47,9 @@ extension OpenMagicModel {
         case curie = "curie"
         case babbage = "babbage"
         case ada = "ada"
+    }
+    public enum Embeddings: String {
+        case textEmbeddingAda002 = "text-embedding-ada-002"
     }
 
 }
