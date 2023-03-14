@@ -39,10 +39,12 @@ final class EditsViewController: ItemViewController {
             return
         }
         view.endEditing(true)
+        resultTextView.text = ""
         showLoadingView()
         openMagicAI.edits.createEdit(input: input, instruction: instruction) { [weak self] result in
             DispatchQueue.main.async {
                 self?.hideLoadingView()
+                self?.display(result: result)
             }
             debugPrint(result)
         }
