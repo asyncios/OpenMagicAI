@@ -14,7 +14,7 @@ extension ModelsApi {
     /// Lists the currently available models, and provides basic information about each one such as the owner and availability.
     ///
     /// - Returns: Future ``ListModels``
-    public func listModelsFuture() -> Future<ListModels, Error> {
+    public func listModels() -> Future<ListModels, Error> {
         Future<ListModels, Error> { promise in
             self.listModels { result in
                 promise(result)

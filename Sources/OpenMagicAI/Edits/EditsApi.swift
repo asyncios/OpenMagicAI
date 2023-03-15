@@ -31,6 +31,10 @@ public final class EditsApi: ApiQueryable {
         topP: Int? = 1,
         onCompletion: @escaping (Result<EditsCreated, Error>) -> Void
     ) {
+        if instruction.isEmpty {
+            onCompletion(.failure(OpenMagicAI.OMError.missingRequiredInput))
+            return
+        }
         let parameters = CreateEdit.Parameters(
             model: model.rawValue,
             input: input,

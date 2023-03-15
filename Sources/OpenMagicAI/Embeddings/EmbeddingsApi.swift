@@ -28,6 +28,10 @@ public final class EmbeddingsApi: ApiQueryable {
         user: String? = nil,
         onCompletion: @escaping (Result<EmbeddingsCreated, Error>) -> Void
     ) {
+        if input.isEmpty {
+            onCompletion(.failure(OpenMagicAI.OMError.missingRequiredInput))
+            return
+        }
         let parameters = CreateEmbeddings.Parameters(
             model: model.rawValue,
             input: input,

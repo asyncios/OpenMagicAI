@@ -30,9 +30,10 @@ final class ChatApiTests: XCTestCase {
         let path = EndPoint.chat(.createChatCompletion).url.path
         let mock = try Mocks.chatCompletion.getMock(type: ChatCompletionsCreated.self)
         MockURLProtocol.mockData[path] = mock.1
+        let message = ChatMessageTestFactory.getChatMessageMock()
         // Case
         let expectation: XCTestExpectation = .init(description: "testCreateChatCompletion")
-        sut.createChatCompletion(messages: []) { result in
+        sut.createChatCompletion(messages: [message]) { result in
             if case .success(let success) = result,
                success.object == mock.0.object {
                 expectation.fulfill()
@@ -51,8 +52,9 @@ extension ChatApiTests {
         let path = EndPoint.chat(.createChatCompletion).url.path
         let mock = try Mocks.chatCompletion.getMock(type: ChatCompletionsCreated.self)
         MockURLProtocol.mockData[path] = mock.1
+        let message = ChatMessageTestFactory.getChatMessageMock()
         // Case
-        let result = try await self.sut.createChatCompletion(messages: [])
+        let result = try await self.sut.createChatCompletion(messages: [message])
         // Then
         XCTAssertEqual(mock.0.object, result.object)
     }
@@ -65,10 +67,11 @@ extension ChatApiTests {
         let path = EndPoint.chat(.createChatCompletion).url.path
         let mock = try Mocks.chatCompletion.getMock(type: ChatCompletionsCreated.self)
         MockURLProtocol.mockData[path] = mock.1
+        let message = ChatMessageTestFactory.getChatMessageMock()
         let expectation: XCTestExpectation = .init(description: "testCreateChatCompletionFuture")
         var result: ChatCompletionsCreated?
         // Case
-        sut.createChatCompletion(messages: []).sink { result in
+        sut.createChatCompletion(messages: [message]).sink { result in
             if case .finished = result {
                 expectation.fulfill()
             }

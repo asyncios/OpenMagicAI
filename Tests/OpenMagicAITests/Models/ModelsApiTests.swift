@@ -66,7 +66,7 @@ extension ModelsApiTests {
         let expectation: XCTestExpectation = .init(description: "testListModelsFuture")
         var result: ListModels?
         // Case
-        sut.listModelsFuture().sink { result in
+        sut.listModels().sink { result in
             if case .finished = result {
                 expectation.fulfill()
             }

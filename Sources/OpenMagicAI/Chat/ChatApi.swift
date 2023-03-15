@@ -36,6 +36,10 @@ public final class ChatApi: ApiQueryable {
         user: String? = nil,
         onCompletion: @escaping (Result<ChatCompletionsCreated, Error>) -> Void
     ) {
+        if messages.isEmpty {
+            onCompletion(.failure(OpenMagicAI.OMError.missingRequiredInput))
+            return
+        }
         let parameters = CreateChatCompletion.Parameters(
             model: model.rawValue,
             messages: messages,

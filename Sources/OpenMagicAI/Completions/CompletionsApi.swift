@@ -38,6 +38,10 @@ public final class CompletionsApi: ApiQueryable {
         user: String? = nil,
         onCompletion: @escaping (Result<CompletionsCreated, Error>) -> Void
     ) {
+        if prompt.isEmpty {
+            onCompletion(.failure(OpenMagicAI.OMError.missingRequiredInput))
+            return
+        }
         let parameters = CreateCompletion.Parameters(
             model: model.rawValue,
             prompt: prompt,
