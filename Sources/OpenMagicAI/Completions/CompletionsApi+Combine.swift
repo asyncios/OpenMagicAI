@@ -14,6 +14,7 @@ extension CompletionsApi {
     /// Creates a completion for the provided prompt and parameters
     ///
     /// - Parameters:
+    ///   - model: ``CreateCompletionModel`` enum
     ///   - prompt: String
     ///
     /// - Returns: Future ``CompletionsCreated``

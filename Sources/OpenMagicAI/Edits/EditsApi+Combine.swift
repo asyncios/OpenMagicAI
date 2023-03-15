@@ -14,8 +14,8 @@ extension EditsApi {
     /// Creates a new edit for the provided input, instruction, and parameters.
     ///
     /// - Parameters:
-    ///   - model: ``CreateEditModel``
-    ///   - input: String (optional)
+    ///   - model: ``CreateEditModel`` enum
+    ///   - input: String?
     ///   - instruction: String
     ///
     /// - Returns: Future ``EditsCreated``

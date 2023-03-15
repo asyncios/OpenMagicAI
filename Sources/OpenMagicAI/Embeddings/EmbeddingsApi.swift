@@ -18,9 +18,9 @@ public final class EmbeddingsApi: ApiQueryable {
     /// Creates an embedding vector representing the input text.
     ///
     /// - Parameters:
-    ///   - model: ``CreateEmbeddingsModel``
+    ///   - model: ``CreateEmbeddingsModel`` enum
     ///   - input: String
-    ///   - user: String (optional)
+    ///   - user: String?
     ///   - onCompletion: ``EmbeddingsCreated``
     public func createEmbeddings(
         model: CreateEmbeddingsModel = .textEmbeddingAda002,

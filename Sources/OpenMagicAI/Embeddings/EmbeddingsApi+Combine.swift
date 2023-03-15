@@ -14,9 +14,9 @@ extension EmbeddingsApi {
     /// Creates an embedding vector representing the input text.
     ///
     /// - Parameters:
-    ///   - model: ``CreateEmbeddingsModel``
+    ///   - model: ``CreateEmbeddingsModel`` enum
     ///   - input: String
-    ///   - user: String (optional)
+    ///   - user: String?
     ///   
     /// - Returns: Future ``EmbeddingsCreated``
     public func createEmbeddings(

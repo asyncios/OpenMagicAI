@@ -14,7 +14,7 @@ extension ChatApi {
     /// Creates a completion for the chat message.
     ///
     /// - Parameters:
-    ///   - model: ``CreateChatCompletionModel``
+    ///   - model: ``CreateChatCompletionModel`` enum
     ///   - messages: array of ``ChatMessage``
     ///
     /// - Returns: Future ``ChatCompletionsCreated``

@@ -18,6 +18,7 @@ public final class CompletionsApi: ApiQueryable {
     /// Creates a completion for the provided prompt and parameters
     ///
     /// - Parameters:
+    ///   - model: ``CreateCompletionModel`` enum
     ///   - prompt: String
     ///   - onCompletion: ``CompletionsCreated``
     public func createCompletion(
