@@ -48,7 +48,7 @@ There's a sample app [here](https://github.com/asyncios/OpenMagicAI/tree/master/
 
 ```swift
 dependencies: [ 
-  .package(url: "https://github.com/asyncios/OpenMagicAI.git", from: "1.1.0") 
+  .package(url: "https://github.com/asyncios/OpenMagicAI.git", .upToNextMajor(from: "1.2.0"))
  ]
 ```
 
@@ -78,7 +78,7 @@ Task {
 #### Combine usage
 
 ```swift
-openMagicAI.images.createImageFuture(prompt: "dog in a park").sink { _ in
+openMagicAI.images.createImage(prompt: "dog in a park").sink { _ in
 } receiveValue: { value in
   debugPrint(value)
 }.store(in: &cancellables)
