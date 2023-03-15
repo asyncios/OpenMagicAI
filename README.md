@@ -1,5 +1,8 @@
 [![Swift](https://img.shields.io/badge/Swift-5.7_|_5.6_|_5.5-red)](https://img.shields.io/badge/Swift-5.7_|_5.6_|_5.5-red)
 [![Platforms](https://img.shields.io/badge/Platforms-macOS_iOS_tvOS_watchOS_Linux_Windows-green?style=flat-square)](https://img.shields.io/badge/Platforms-macOS_iOS_tvOS_watchOS_Linux_Windows-Green?style=flat-square)
+[![CHAT GPT-4](https://img.shields.io/badge/CHAT_GPT_4-Support-blue)](https://img.shields.io/badge/CHAT_GPT_4-Support-blue)
+[![CHAT GPT-3.5](https://img.shields.io/badge/CHAT_GPT_3.5-Support-blue)](https://img.shields.io/badge/CHAT_GPT_3.5-Support-blue)
+[![CHAT GPT-3](https://img.shields.io/badge/CHAT_GPT_3-Support-blue)](https://img.shields.io/badge/CHAT_GPT_3-Support-blue)
 [![Swift Package Manager](https://img.shields.io/badge/Swift_Package_Manager-Compatible-green)](https://img.shields.io/badge/Swift_Package_Manager-Compatible-green)
 [![Async Await](https://img.shields.io/badge/Async_Await-Support-blue)](https://img.shields.io/badge/Async_Await-Support-blue)
 [![Combine](https://img.shields.io/badge/Combine-Support-blue)](https://img.shields.io/badge/Combine-Support-blue)
@@ -15,7 +18,7 @@
 This is a **non-official** iOS library of OpenAI.
 
 OpenMagicAI is a friendly Swift library for accesing to OpenAI API. OpenAI api official [docs](https://platform.openai.com/docs/introduction) reference.
-
+> Chat GPT-4 support :heart:
 
 ## Example usage
 
@@ -57,6 +60,24 @@ dependencies: [
 Set your API Key, if you don't have one [create it here](https://platform.openai.com/account/api-keys)
 
 `let openMagicAI = OpenAISwift(authToken: "APIKEY")`
+
+### Chat
+
+```swift
+openMagicAI.chat.createChatCompletion(
+    messages: [.init(role: .user, content: "Give me some movie options for tonight")]
+) { result in
+       debugPrint(result)
+}
+
+// GPT-4 model
+openMagicAI.chat.createChatCompletion(
+    model: .gpt4,
+    messages: [.init(role: .user, content: "Give me some movie options for tonight")]
+) { result in
+       debugPrint(result)
+}
+```
 
 #### Closure usage
 
