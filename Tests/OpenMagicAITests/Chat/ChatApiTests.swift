@@ -68,7 +68,7 @@ extension ChatApiTests {
         let expectation: XCTestExpectation = .init(description: "testCreateChatCompletionFuture")
         var result: ChatCompletionsCreated?
         // Case
-        sut.createChatCompletionFuture(messages: []).sink { result in
+        sut.createChatCompletion(messages: []).sink { result in
             if case .finished = result {
                 expectation.fulfill()
             }

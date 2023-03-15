@@ -68,7 +68,7 @@ extension CompletionsApiTests {
         let expectation: XCTestExpectation = .init(description: "testCreateCompletionFuture")
         var result: CompletionsCreated?
         // Case
-        sut.createCompletionFuture(prompt: "test").sink { result in
+        sut.createCompletion(prompt: "test").sink { result in
             if case .finished = result {
                 expectation.fulfill()
             }

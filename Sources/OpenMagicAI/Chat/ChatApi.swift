@@ -23,8 +23,8 @@ public final class ChatApi: ApiQueryable {
     ///   - messages: array of message
     ///   - onCompletion: ``ChatCompletionsCreated``
     public func createChatCompletion(
-        model: CreateChatCompletion.Model = .gpt35Turbo,
-        messages: [CreateChatCompletion.Message],
+        model: CreateChatCompletionModel = .gpt35Turbo,
+        messages: [ChatMessage],
         temperature: Int? = 1,
         topP: Int? = 1,
         n: Int? = 1,

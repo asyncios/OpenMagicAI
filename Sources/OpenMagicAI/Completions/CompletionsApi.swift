@@ -21,7 +21,7 @@ public final class CompletionsApi: ApiQueryable {
     ///   - prompt: String
     ///   - onCompletion: ``CompletionsCreated``
     public func createCompletion(
-        model: OpenMagicModel = .chatGPT35(.textDavinci003),
+        model: CreateCompletionModel = .textDavinci003,
         prompt: String,
         suffix: String? = nil,
         maxTokens: Int? = 16,
