@@ -18,12 +18,12 @@ public final class EditsApi: ApiQueryable {
     /// Creates a new edit for the provided input, instruction, and parameters.
     ///
     /// - Parameters:
-    ///   - model: String
+    ///   - model: ``CreateEditModel``
     ///   - input: String (optional)
     ///   - instruction: String
     ///   - onCompletion: ``EditsCreated``
     public func createEdit(
-        model: CreateEdit.Model = .textDavinciEdit001,
+        model: CreateEditModel = .textDavinciEdit001,
         input: String = "",
         instruction: String,
         n: Int? = 1,

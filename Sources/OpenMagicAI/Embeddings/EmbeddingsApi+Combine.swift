@@ -14,13 +14,13 @@ extension EmbeddingsApi {
     /// Creates an embedding vector representing the input text.
     ///
     /// - Parameters:
-    ///   - model: String
+    ///   - model: ``CreateEmbeddingsModel``
     ///   - input: String
     ///   - user: String (optional)
     ///   
     /// - Returns: Future ``EmbeddingsCreated``
-    public func createEmbeddingsFuture(
-        model: OpenMagicModel.Embeddings = .textEmbeddingAda002,
+    public func createEmbeddings(
+        model: CreateEmbeddingsModel = .textEmbeddingAda002,
         input: String,
         user: String? = nil
     ) -> Future<EmbeddingsCreated, Error> {

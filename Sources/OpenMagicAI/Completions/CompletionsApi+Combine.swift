@@ -17,8 +17,8 @@ extension CompletionsApi {
     ///   - prompt: String
     ///
     /// - Returns: Future ``CompletionsCreated``
-    public func createCompletionFuture(
-        model: OpenMagicModel = .chatGPT35(.textDavinci003),
+    public func createCompletion(
+        model: CreateCompletionModel = .textDavinci003,
         prompt: String,
         suffix: String? = nil,
         maxTokens: Int? = 16,

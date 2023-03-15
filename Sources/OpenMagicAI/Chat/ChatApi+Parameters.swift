@@ -8,27 +8,10 @@
 import Foundation
 
 extension ChatApi {
-    public enum CreateChatCompletion {
-        public enum Model: String {
-            case gpt35Turbo = "gpt-3.5-turbo"
-            case gpt35Turbo0301 = "gpt-3.5-turbo-0301"
-        }
-        public struct Message: Codable {
-            public let role: Role
-            public let content: String
-            public enum Role: String, Codable {
-                case system
-                case user
-                case assistant
-            }
-            public init(role: Role, content: String) {
-                self.role = role
-                self.content = content
-            }
-        }
+    enum CreateChatCompletion {
         struct Parameters: Encodable {
             let model: String
-            let messages: [Message]
+            let messages: [ChatMessage]
             let temperature: Int?
             let topP: Int?
             let n: Int?

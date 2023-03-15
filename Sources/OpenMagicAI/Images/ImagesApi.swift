@@ -25,7 +25,7 @@ public final class ImagesApi: ApiQueryable {
         prompt: String,
         n: Int = 1,
         size: ImageSize = .init(width: 256, height: 256),
-        responseFormat: ResponseFormat? = .url,
+        responseFormat: ImagesResponseFormat? = .url,
         user: String? = nil,
         onCompletion: @escaping (Result<ImagesCreated, Error>) -> Void
     ) {

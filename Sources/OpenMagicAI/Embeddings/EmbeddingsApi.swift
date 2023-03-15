@@ -18,12 +18,12 @@ public final class EmbeddingsApi: ApiQueryable {
     /// Creates an embedding vector representing the input text.
     ///
     /// - Parameters:
-    ///   - model: String
+    ///   - model: ``CreateEmbeddingsModel``
     ///   - input: String
     ///   - user: String (optional)
     ///   - onCompletion: ``EmbeddingsCreated``
     public func createEmbeddings(
-        model: OpenMagicModel.Embeddings = .textEmbeddingAda002,
+        model: CreateEmbeddingsModel = .textEmbeddingAda002,
         input: String,
         user: String? = nil,
         onCompletion: @escaping (Result<EmbeddingsCreated, Error>) -> Void

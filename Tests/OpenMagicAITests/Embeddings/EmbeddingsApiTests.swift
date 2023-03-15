@@ -67,7 +67,7 @@ extension EmbeddingsApiTests {
         let expectation: XCTestExpectation = .init(description: "testCreateEmbeddingsFuture")
         var result: EmbeddingsCreated?
         // Case
-        sut.createEmbeddingsFuture(input: "test").sink { result in
+        sut.createEmbeddings(input: "test").sink { result in
             if case .finished = result {
                 expectation.fulfill()
             }
