@@ -18,10 +18,11 @@ public final class CompletionsApi: ApiQueryable {
     /// Creates a completion for the provided prompt and parameters
     ///
     /// - Parameters:
+    ///   - model: ``CreateCompletionModel`` enum
     ///   - prompt: String
     ///   - onCompletion: ``CompletionsCreated``
     public func createCompletion(
-        model: OpenMagicModel = .chatGPT35(.textDavinci003),
+        model: CreateCompletionModel = .textDavinci003,
         prompt: String,
         suffix: String? = nil,
         maxTokens: Int? = 16,
@@ -38,6 +39,10 @@ public final class CompletionsApi: ApiQueryable {
         user: String? = nil,
         onCompletion: @escaping (Result<CompletionsCreated, Error>) -> Void
     ) {
+        if prompt.isEmpty {
+            onCompletion(.failure(OpenMagicAI.OMError.missingRequiredInput))
+            return
+        }
         let parameters = CreateCompletion.Parameters(
             model: model.rawValue,
             prompt: prompt,

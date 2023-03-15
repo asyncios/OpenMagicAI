@@ -14,13 +14,13 @@ extension ChatApi {
     /// Creates a completion for the chat message.
     ///
     /// - Parameters:
-    ///   - model: String
-    ///   - messages: array of message
+    ///   - model: ``CreateChatCompletionModel`` enum
+    ///   - messages: array of ``ChatMessage``
     ///
     /// - Returns: Future ``ChatCompletionsCreated``
-    public func createChatCompletionFuture(
-        model: CreateChatCompletion.Model = .gpt35Turbo,
-        messages: [CreateChatCompletion.Message],
+    public func createChatCompletion(
+        model: CreateChatCompletionModel = .gpt35Turbo,
+        messages: [ChatMessage],
         temperature: Int? = 1,
         topP: Int? = 1,
         n: Int? = 1,

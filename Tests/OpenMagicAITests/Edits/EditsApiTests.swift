@@ -68,7 +68,7 @@ extension EditsApiTests {
         let expectation: XCTestExpectation = .init(description: "testCreateEditFuture")
         var result: EditsCreated?
         // Case
-        sut.createEditFuture(instruction: "test").sink { result in
+        sut.createEdit(instruction: "test").sink { result in
             if case .finished = result {
                 expectation.fulfill()
             }

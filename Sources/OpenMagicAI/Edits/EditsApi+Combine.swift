@@ -14,13 +14,13 @@ extension EditsApi {
     /// Creates a new edit for the provided input, instruction, and parameters.
     ///
     /// - Parameters:
-    ///   - model: String
-    ///   - input: String (optional)
+    ///   - model: ``CreateEditModel`` enum
+    ///   - input: String?
     ///   - instruction: String
     ///
     /// - Returns: Future ``EditsCreated``
-    public func createEditFuture(
-        model: CreateEdit.Model = .textDavinciEdit001,
+    public func createEdit(
+        model: CreateEditModel = .textDavinciEdit001,
         input: String = "",
         instruction: String,
         n: Int? = 1,

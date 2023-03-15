@@ -14,11 +14,12 @@ extension CompletionsApi {
     /// Creates a completion for the provided prompt and parameters
     ///
     /// - Parameters:
+    ///   - model: ``CreateCompletionModel`` enum
     ///   - prompt: String
     ///
     /// - Returns: Future ``CompletionsCreated``
-    public func createCompletionFuture(
-        model: OpenMagicModel = .chatGPT35(.textDavinci003),
+    public func createCompletion(
+        model: CreateCompletionModel = .textDavinci003,
         prompt: String,
         suffix: String? = nil,
         maxTokens: Int? = 16,

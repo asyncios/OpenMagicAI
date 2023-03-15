@@ -18,12 +18,12 @@ public final class EditsApi: ApiQueryable {
     /// Creates a new edit for the provided input, instruction, and parameters.
     ///
     /// - Parameters:
-    ///   - model: String
-    ///   - input: String (optional)
+    ///   - model: ``CreateEditModel`` enum
+    ///   - input: String?
     ///   - instruction: String
     ///   - onCompletion: ``EditsCreated``
     public func createEdit(
-        model: CreateEdit.Model = .textDavinciEdit001,
+        model: CreateEditModel = .textDavinciEdit001,
         input: String = "",
         instruction: String,
         n: Int? = 1,
@@ -31,6 +31,10 @@ public final class EditsApi: ApiQueryable {
         topP: Int? = 1,
         onCompletion: @escaping (Result<EditsCreated, Error>) -> Void
     ) {
+        if instruction.isEmpty {
+            onCompletion(.failure(OpenMagicAI.OMError.missingRequiredInput))
+            return
+        }
         let parameters = CreateEdit.Parameters(
             model: model.rawValue,
             input: input,
