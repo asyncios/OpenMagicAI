@@ -59,7 +59,7 @@ dependencies: [
 
 Set your API Key, if you don't have one [create it here](https://platform.openai.com/account/api-keys)
 
-`let openMagicAI = OpenAISwift(authToken: "APIKEY")`
+`let openMagicAI = OpenMagicAI(authToken: "APIKEY")`
 
 ### Chat
 
