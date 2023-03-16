@@ -104,7 +104,15 @@ openMagicAI.images.createImage(prompt: "dog in a park").sink { _ in
   debugPrint(value)
 }.store(in: &cancellables)
 ```
+## Endpoints available
 
+- [ListModels](https://platform.openai.com/docs/api-reference/models/list)
+- [Retreive Model](https://platform.openai.com/docs/api-reference/models/retrieve)
+- [Create Completion](https://platform.openai.com/docs/api-reference/completions/create)
+- [Create Chat Completion](https://platform.openai.com/docs/api-reference/chat/create)
+- [Create Edit](https://platform.openai.com/docs/api-reference/edits/create)
+- [Create Image](https://platform.openai.com/docs/api-reference/images/create)
+- [Create Embeddings](https://platform.openai.com/docs/api-reference/embeddings/create)
 ## Licenses
 
 All source code is licensed under the [MIT License](https://github.com/asyncios/OpenMagicAI/blob/master/LICENSE).
