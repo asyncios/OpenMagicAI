@@ -18,7 +18,7 @@
 This is a **non-official** iOS library of OpenAI.
 
 OpenMagicAI is a friendly Swift library for accesing to OpenAI API. OpenAI api official [docs](https://platform.openai.com/docs/introduction) reference.
-> Chat GPT-4 support :heart:
+> Chat GPT-4 model support :heart: (Limited beta) [Join the waitlist](https://openai.com/waitlist/gpt-4-api)
 
 ## Example usage
 
