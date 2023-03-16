@@ -32,7 +32,7 @@ final class CompletionsApiTests: XCTestCase {
         MockURLProtocol.mockData[path] = mock.1
         // Case
         let expectation: XCTestExpectation = .init(description: "testCreateCompletion")
-        sut.createCompletion(prompt: "test") { result in
+        sut.createCompletion(prompt: .string("test")) { result in
             if case .success(let success) = result,
                success.object == mock.0.object {
                 expectation.fulfill()
@@ -52,7 +52,7 @@ extension CompletionsApiTests {
         let mock = try Mocks.createCompletion.getMock(type: CompletionsCreated.self)
         MockURLProtocol.mockData[path] = mock.1
         // Case
-        let result = try await self.sut.createCompletion(prompt: "test")
+        let result = try await self.sut.createCompletion(prompt: .string("test"))
         // Then
         XCTAssertEqual(mock.0.object, result.object)
     }
@@ -68,7 +68,7 @@ extension CompletionsApiTests {
         let expectation: XCTestExpectation = .init(description: "testCreateCompletionFuture")
         var result: CompletionsCreated?
         // Case
-        sut.createCompletion(prompt: "test").sink { result in
+        sut.createCompletion(prompt: .string("test")).sink { result in
             if case .finished = result {
                 expectation.fulfill()
             }

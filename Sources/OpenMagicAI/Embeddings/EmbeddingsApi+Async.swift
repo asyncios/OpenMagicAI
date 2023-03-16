@@ -14,13 +14,13 @@ extension EmbeddingsApi {
     ///
     /// - Parameters:
     ///   - model: ``CreateEmbeddingsModel`` enum
-    ///   - input: String
+    ///   - input: String or Array of strings ``StringOrArray``
     ///   - user: String?
     ///
     /// - Returns: Async ``EmbeddingsCreated``
     public func createEmbeddings(
         model: CreateEmbeddingsModel = .textEmbeddingAda002,
-        input: String,
+        input: StringOrArray,
         user: String? = nil
     ) async throws -> EmbeddingsCreated {
         return try await withCheckedThrowingContinuation { continuation in

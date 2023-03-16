@@ -19,12 +19,12 @@ public final class EmbeddingsApi: ApiQueryable {
     ///
     /// - Parameters:
     ///   - model: ``CreateEmbeddingsModel`` enum
-    ///   - input: String
+    ///   - input: String or Array of strings ``StringOrArray``
     ///   - user: String?
     ///   - onCompletion: ``EmbeddingsCreated``
     public func createEmbeddings(
         model: CreateEmbeddingsModel = .textEmbeddingAda002,
-        input: String,
+        input: StringOrArray,
         user: String? = nil,
         onCompletion: @escaping (Result<EmbeddingsCreated, Error>) -> Void
     ) {
@@ -34,7 +34,7 @@ public final class EmbeddingsApi: ApiQueryable {
         }
         let parameters = CreateEmbeddings.Parameters(
             model: model.rawValue,
-            input: input,
+            input: input.toArray(),
             user: user
         )
         openAiDataTask(urlSession: urlSession, endPoint: .embeddings(.createEmbeddings), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)

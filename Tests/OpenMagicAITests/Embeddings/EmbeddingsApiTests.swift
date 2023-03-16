@@ -32,7 +32,7 @@ final class EmbeddingsApiTests: XCTestCase {
         MockURLProtocol.mockData[path] = mock.1
         // Case
         let expectation: XCTestExpectation = .init(description: "testCreateEmbeddings")
-        sut.createEmbeddings(input: "test") { result in
+        sut.createEmbeddings(input: .string("test")) { result in
             if case .success(let success) = result,
                success.object == mock.0.object {
                 expectation.fulfill()
@@ -51,7 +51,7 @@ extension EmbeddingsApiTests {
         let mock = try Mocks.createEmbeddings.getMock(type: EmbeddingsCreated.self)
         MockURLProtocol.mockData[path] = mock.1
         // Case
-        let result = try await self.sut.createEmbeddings(input: "test")
+        let result = try await self.sut.createEmbeddings(input: .string("test"))
         // Then
         XCTAssertEqual(mock.0.object, result.object)
     }
@@ -67,7 +67,7 @@ extension EmbeddingsApiTests {
         let expectation: XCTestExpectation = .init(description: "testCreateEmbeddingsFuture")
         var result: EmbeddingsCreated?
         // Case
-        sut.createEmbeddings(input: "test").sink { result in
+        sut.createEmbeddings(input: .string("test")).sink { result in
             if case .finished = result {
                 expectation.fulfill()
             }
