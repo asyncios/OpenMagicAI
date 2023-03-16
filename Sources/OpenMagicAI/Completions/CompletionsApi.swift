@@ -19,11 +19,11 @@ public final class CompletionsApi: ApiQueryable {
     ///
     /// - Parameters:
     ///   - model: ``CreateCompletionModel`` enum
-    ///   - prompt: String
+    ///   - prompt: String or Array of strings ``StringOrArray``
     ///   - onCompletion: ``CompletionsCreated``
     public func createCompletion(
         model: CreateCompletionModel = .textDavinci003,
-        prompt: String,
+        prompt: StringOrArray,
         suffix: String? = nil,
         maxTokens: Int? = 16,
         temperature: Int? = 1,
@@ -45,7 +45,7 @@ public final class CompletionsApi: ApiQueryable {
         }
         let parameters = CreateCompletion.Parameters(
             model: model.rawValue,
-            prompt: prompt,
+            prompt: prompt.toArray(),
             suffix: suffix,
             maxTokens: maxTokens,
             temperature: temperature,

@@ -11,7 +11,7 @@ extension CompletionsApi {
     enum CreateCompletion {
         struct Parameters: Encodable {
             let model: String
-            let prompt: String
+            let prompt: [String]
             let suffix: String?
             let maxTokens: Int?
             let temperature: Int?
