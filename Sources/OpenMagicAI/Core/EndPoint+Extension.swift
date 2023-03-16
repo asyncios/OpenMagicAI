@@ -70,11 +70,16 @@ extension EndPoint.Models {
         switch self {
         case .listModels:
             return nil
+        case .retreiveModel(let model):
+            let value = model.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+            return value
         }
     }
     var method: String? {
         switch self {
         case .listModels:
+            return "GET"
+        case .retreiveModel(_):
             return "GET"
         }
     }

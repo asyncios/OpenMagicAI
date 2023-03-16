@@ -1,0 +1,5 @@
+{
+  "id": "text-davinci-003",
+  "object": "model",
+  "owned_by": "openai"
+}

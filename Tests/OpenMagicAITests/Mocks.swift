@@ -16,6 +16,7 @@ enum Mocks: String {
     case createImage = "CreateImage.json"
     case chatCompletion = "CreateChatCompletion.json"
     case createEmbeddings = "CreateEmbeddings.json"
+    case retreiveModel = "RetreiveModel.json"
 
     var url: URL {
         let thisSourceFile = URL(fileURLWithPath: #file)

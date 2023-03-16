@@ -51,7 +51,7 @@ There's a sample app [here](https://github.com/asyncios/OpenMagicAI/tree/master/
 
 ```swift
 dependencies: [ 
-  .package(url: "https://github.com/asyncios/OpenMagicAI.git", .upToNextMajor(from: "1.2.0"))
+  .package(url: "https://github.com/asyncios/OpenMagicAI.git", .upToNextMajor(from: "1.3.0"))
  ]
 ```
 

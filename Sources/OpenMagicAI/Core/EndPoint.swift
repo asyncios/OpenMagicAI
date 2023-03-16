@@ -57,7 +57,7 @@ enum EndPoint: EndpointQueryable {
 
 extension EndPoint {
 
-    enum Images: String, EndpointPathQueryable {
+    enum Images: EndpointPathQueryable {
         case createEdit
         case createImageEdit
     }
@@ -72,6 +72,7 @@ extension EndPoint {
 
     enum Models: EndpointPathQueryable {
         case listModels
+        case retreiveModel(model: String)
     }
 
     enum Chat: EndpointPathQueryable {
