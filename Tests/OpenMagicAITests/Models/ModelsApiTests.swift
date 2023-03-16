@@ -40,6 +40,24 @@ final class ModelsApiTests: XCTestCase {
         // When
         wait(for: [expecation], timeout: 1)
     }
+
+    func testRetreiveModel() throws {
+        // Given
+        let model = "test"
+        let path = EndPoint.models(.retreiveModel(model: model)).url.path
+        let mock = try Mocks.retreiveModel.getMock(type: Model.self)
+        MockURLProtocol.mockData[path] = mock.1
+        let expecation: XCTestExpectation = .init(description: "testRetreiveModel")
+        // Case
+        sut.retreiveModel(model: model) { result in
+            if case .success(let success) = result,
+               success.object == mock.0.object {
+                expecation.fulfill()
+            }
+        }
+        // When
+        wait(for: [expecation], timeout: 1)
+    }
 }
 
 // MARK: Async
@@ -54,10 +72,23 @@ extension ModelsApiTests {
         // When
         XCTAssertEqual(mock.0.object, result.object)
     }
+
+    func testRetreiveModelAsync() async throws -> Void {
+        // Given
+        let model = "test"
+        let path = EndPoint.models(.retreiveModel(model: model)).url.path
+        let mock = try Mocks.retreiveModel.getMock(type: Model.self)
+        MockURLProtocol.mockData[path] = mock.1
+        // Case
+        let result = try await sut.retreiveModel(model: model)
+        // When
+        XCTAssertEqual(mock.0.object, result.object)
+    }
 }
 
 // MARK: Combine
 extension ModelsApiTests {
+
     func testListModelsFuture() async throws -> Void {
         // Given
         let path = EndPoint.models(.listModels).url.path
@@ -67,6 +98,27 @@ extension ModelsApiTests {
         var result: ListModels?
         // Case
         sut.listModels().sink { result in
+            if case .finished = result {
+                expectation.fulfill()
+            }
+        } receiveValue: { value in
+            result = value
+        }.store(in: &cancellables)
+        // Then
+        wait(for: [expectation], timeout: 1)
+        XCTAssertEqual(mock.0.object, result?.object)
+    }
+
+    func testRetreiveModelFuture() async throws -> Void {
+        // Given
+        let model = "test"
+        let path = EndPoint.models(.retreiveModel(model: model)).url.path
+        let mock = try Mocks.retreiveModel.getMock(type: Model.self)
+        MockURLProtocol.mockData[path] = mock.1
+        let expectation: XCTestExpectation = .init(description: "testRetreiveModelFuture")
+        var result: Model?
+        // Case
+        sut.retreiveModel(model: model).sink { result in
             if case .finished = result {
                 expectation.fulfill()
             }

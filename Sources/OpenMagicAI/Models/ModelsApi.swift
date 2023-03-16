@@ -25,4 +25,16 @@ public final class ModelsApi: ApiQueryable {
     ) {
         openAiDataTask(urlSession: urlSession, endPoint: .models(.listModels), apiKey: apiKey, onCompletion: onCompletion)
     }
+
+    /// Retrieves a model instance, providing basic information about the model such as the owner and permissioning.
+    ///
+    /// - Parameters:
+    ///   - model: String
+    ///   - onCompletion: ``Model``
+    public func retreiveModel(
+        model: String,
+        onCompletion: @escaping (Result<Model, Error>) -> Void
+    ) {
+        openAiDataTask(urlSession: urlSession, endPoint: .models(.retreiveModel(model: model)), apiKey: apiKey, onCompletion: onCompletion)
+    }
 }
