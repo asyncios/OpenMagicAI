@@ -39,7 +39,7 @@ final class EmbeddingsViewController: ItemViewController {
         view.endEditing(true)
         resultTextView.text = ""
         showLoadingView()
-        openMagicAI.embeddings.createEmbeddings(input: input) { [weak self] result in
+        openMagicAI.embeddings.createEmbeddings(input: .string(input)) { [weak self] result in
             DispatchQueue.main.async {
                 self?.hideLoadingView()
                 self?.display(result: result)

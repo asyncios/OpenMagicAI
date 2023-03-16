@@ -15,13 +15,13 @@ extension EmbeddingsApi {
     ///
     /// - Parameters:
     ///   - model: ``CreateEmbeddingsModel`` enum
-    ///   - input: String
+    ///   - input: String or Array of strings ``StringOrArray``
     ///   - user: String?
     ///   
     /// - Returns: Future ``EmbeddingsCreated``
     public func createEmbeddings(
         model: CreateEmbeddingsModel = .textEmbeddingAda002,
-        input: String,
+        input: StringOrArray,
         user: String? = nil
     ) -> Future<EmbeddingsCreated, Error> {
         Future<EmbeddingsCreated, Error> { promise in
