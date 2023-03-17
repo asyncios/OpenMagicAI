@@ -24,11 +24,15 @@ public final class ImagesApi: ApiQueryable {
     public func createImage(
         prompt: String,
         n: Int = 1,
-        size: ImageSize = .init(width: 256, height: 256),
+        size: ImageSize = ImageSize.defaultSize,
         responseFormat: ImagesResponseFormat? = .url,
         user: String? = nil,
         onCompletion: @escaping (Result<ImagesCreated, Error>) -> Void
     ) {
+        if prompt.isEmpty {
+            onCompletion(.failure(OpenMagicAI.OMError.missingRequiredInput))
+            return
+        }
         let parameters = CreateImage(
             prompt: prompt,
             n: n,
@@ -39,4 +43,37 @@ public final class ImagesApi: ApiQueryable {
         dataTask(urlSession: urlSession, endPoint: .images(.createEdit), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)
     }
 
+    public func createImageEdit(
+        image: Data,
+        mask: Data?,
+        prompt: String,
+        n: Int = 1,
+        size: ImageSize = ImageSize.defaultSize,
+        responseFormat: ImagesResponseFormat? = .url,
+        onCompletion: @escaping (Result<ImagesCreated, Error>) -> Void
+    ) {
+        if prompt.isEmpty {
+            onCompletion(.failure(OpenMagicAI.OMError.missingRequiredInput))
+            return
+        }
+        let formDataRequest = MultipartFormDataRequest(url: EndPoint.images(.createEdit).url)
+        formDataRequest.addDataField(
+            fieldName:  "image",
+            fileName: "image.png",
+            data: image,
+            mimeType: "image/png"
+        )
+        if let mask = mask {
+            formDataRequest.addDataField(
+                fieldName:  "mask",
+                fileName: "mask.png",
+                data: mask,
+                mimeType: "image/png"
+            )
+        }
+        formDataRequest.addTextField(named: "prompt", value: prompt)
+        formDataRequest.addTextField(named: "n", value: String(n))
+        formDataRequest.addTextField(named: "size", value: size.stringValue)
+        multiformDataTask(urlSession: urlSession, apiKey: apiKey, formData: formDataRequest, onCompletion: onCompletion)
+    }
 }

@@ -31,17 +31,25 @@ struct MultipartFormDataRequest {
         return fieldString
     }
 
-    func addDataField(named name: String, data: Data, mimeType: String) {
-        httpBody.append(dataFormField(named: name, data: data, mimeType: mimeType))
+    func addDataField(
+        fieldName: String,
+        fileName: String,
+        data: Data,
+        mimeType: String
+    ) {
+        httpBody.append(dataFormField(fieldName: fieldName, fileName: fileName, data: data, mimeType: mimeType))
     }
 
-    private func dataFormField(named name: String,
-                               data: Data,
-                               mimeType: String) -> Data {
+    private func dataFormField(
+        fieldName: String,
+        fileName: String,
+        data: Data,
+        mimeType: String
+    ) -> Data {
         let fieldData = NSMutableData()
 
         fieldData.append("--\(boundary)\r\n")
-        fieldData.append("Content-Disposition: form-data; name=\"\(name)\"\r\n")
+        fieldData.append("Content-Disposition: form-data; name=\"\(fieldName)\"; filename=\"\(fileName)\"\r\n")
         fieldData.append("Content-Type: \(mimeType)\r\n")
         fieldData.append("\r\n")
         fieldData.append(data)

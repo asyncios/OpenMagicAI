@@ -14,4 +14,10 @@ public struct ImageSize {
         self.width = width
         self.height = height
     }
+    
+    public static let defaultSize = ImageSize(width: 1024, height: 1024)
+    
+    var stringValue: String {
+        "\(width)x\(height)"
+    }
 }
