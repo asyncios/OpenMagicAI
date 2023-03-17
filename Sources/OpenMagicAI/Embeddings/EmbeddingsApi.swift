@@ -37,6 +37,6 @@ public final class EmbeddingsApi: ApiQueryable {
             input: input.toArray(),
             user: user
         )
-        openAiDataTask(urlSession: urlSession, endPoint: .embeddings(.createEmbeddings), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)
+        dataTask(urlSession: urlSession, endPoint: .embeddings(.createEmbeddings), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)
     }
 }

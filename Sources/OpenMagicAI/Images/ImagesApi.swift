@@ -36,7 +36,7 @@ public final class ImagesApi: ApiQueryable {
             responseFormat: responseFormat,
             user: user
         )
-        openAiDataTask(urlSession: urlSession, endPoint: .images(.createEdit), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)
+        dataTask(urlSession: urlSession, endPoint: .images(.createEdit), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)
     }
 
 }

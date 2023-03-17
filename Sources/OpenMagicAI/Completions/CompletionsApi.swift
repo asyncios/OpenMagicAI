@@ -60,7 +60,7 @@ public final class CompletionsApi: ApiQueryable {
             bestOf: bestOf,
             user: user
         )
-        openAiDataTask(urlSession: urlSession, endPoint: .completions(.createCompletion), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)
+        dataTask(urlSession: urlSession, endPoint: .completions(.createCompletion), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)
     }
 
 }

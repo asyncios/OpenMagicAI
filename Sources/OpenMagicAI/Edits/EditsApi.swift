@@ -43,6 +43,6 @@ public final class EditsApi: ApiQueryable {
             temperature: temperature,
             topP: topP
         )
-        openAiDataTask(urlSession: urlSession, endPoint: .edits(.createEdit), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)
+        dataTask(urlSession: urlSession, endPoint: .edits(.createEdit), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)
     }
 }

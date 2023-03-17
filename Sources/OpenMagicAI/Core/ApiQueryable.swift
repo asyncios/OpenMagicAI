@@ -12,7 +12,7 @@ protocol ApiQueryable {
 
 extension ApiQueryable {
 
-    func openAiDataTask<E: Encodable, D: Decodable>(
+    func dataTask<E: Encodable, D: Decodable>(
         urlSession: URLSession,
         endPoint: EndPoint,
         apiKey: String,
@@ -30,7 +30,7 @@ extension ApiQueryable {
         }
     }
 
-    func openAiDataTask<D: Decodable>(
+    func dataTask<D: Decodable>(
         urlSession: URLSession,
         endPoint: EndPoint,
         apiKey: String,
@@ -44,6 +44,16 @@ extension ApiQueryable {
         }
     }
 
+    func multiformDataTask<D: Decodable>(
+        urlSession: URLSession,
+        apiKey: String,
+        formData: MultipartFormDataRequest,
+        onCompletion: @escaping (Result<D, Error>) -> Void
+    ) {
+        var request = formData.asURLRequest()
+        request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
+        openAiRequestDataTask(urlSession: urlSession, request: request, onCompletion: onCompletion)
+    }
 }
 
 private extension ApiQueryable {
