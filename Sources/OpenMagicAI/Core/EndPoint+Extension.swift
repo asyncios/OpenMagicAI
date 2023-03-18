@@ -10,7 +10,7 @@ import Foundation
 extension EndPoint.Images {
     var method: String? {
         switch self {
-        case .createEdit:
+        case .createImage:
             return "POST"
         case .createImageEdit:
             return nil
@@ -18,7 +18,7 @@ extension EndPoint.Images {
     }
     var path: String? {
         switch self {
-        case .createEdit:
+        case .createImage:
             return "generations"
         case .createImageEdit:
             return "edits"

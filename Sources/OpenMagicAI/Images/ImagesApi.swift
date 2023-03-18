@@ -40,7 +40,7 @@ public final class ImagesApi: ApiQueryable {
             responseFormat: responseFormat,
             user: user
         )
-        dataTask(urlSession: urlSession, endPoint: .images(.createEdit), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)
+        dataTask(urlSession: urlSession, endPoint: .images(.createImage), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)
     }
 
     public func createImageEdit(
@@ -50,13 +50,14 @@ public final class ImagesApi: ApiQueryable {
         n: Int = 1,
         size: ImageSize = .large,
         responseFormat: ImagesResponseFormat? = .url,
+        user: String? = nil,
         onCompletion: @escaping (Result<ImagesCreated, Error>) -> Void
     ) {
         if prompt.isEmpty {
             onCompletion(.failure(OpenMagicAI.OMError.missingRequiredInput))
             return
         }
-        let formDataRequest = MultipartFormDataRequest(url: EndPoint.images(.createEdit).url)
+        let formDataRequest = MultipartFormDataRequest(url: EndPoint.images(.createImageEdit).url)
         formDataRequest.addDataField(
             fieldName:  "image",
             fileName: "image.png",
@@ -71,9 +72,16 @@ public final class ImagesApi: ApiQueryable {
                 mimeType: "image/png"
             )
         }
-        formDataRequest.addTextField(named: "prompt", value: prompt)
-        formDataRequest.addTextField(named: "n", value: String(n))
-        formDataRequest.addTextField(named: "size", value: size.rawValue)
+        let parameters = CreateImageEdit(
+            prompt: prompt,
+            n: n,
+            size: size,
+            responseFormat: responseFormat,
+            user: user
+        )
+        parameters.textFormFields.forEach({
+            formDataRequest.addTextField(named: $0.0, value: $0.1)
+        })
         multiformDataTask(urlSession: urlSession, apiKey: apiKey, formData: formDataRequest, onCompletion: onCompletion)
     }
 }

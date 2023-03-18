@@ -58,7 +58,7 @@ enum EndPoint: EndpointQueryable {
 extension EndPoint {
 
     enum Images: EndpointPathQueryable {
-        case createEdit
+        case createImage
         case createImageEdit
     }
 
