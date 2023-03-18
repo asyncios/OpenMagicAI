@@ -43,6 +43,13 @@ public final class ImagesApi: ApiQueryable {
         dataTask(urlSession: urlSession, endPoint: .images(.createImage), apiKey: apiKey, parameters: parameters, onCompletion: onCompletion)
     }
 
+    /// Creates an edited or extended image given an original image and a prompt.
+    ///
+    /// - Parameters:
+    ///   - image: Data
+    ///   - mask: Data
+    ///   - prompt: String
+    ///   - onCompletion: ``ImagesCreated``
     public func createImageEdit(
         image: Data,
         mask: Data?,
