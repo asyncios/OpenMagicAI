@@ -130,7 +130,6 @@
 		845F1CF029C5898E00CDCBAD /* ListOptions */ = {
 			isa = PBXGroup;
 			children = (
-				845F1CF429C58AC900CDCBAD /* ImageOptionsViewController.swift */,
 				848B4E1B29C587A20026D3E2 /* ListOptionsViewController.swift */,
 				848B4E1C29C587A20026D3E2 /* ListOptionsViewController.xib */,
 			);
@@ -149,6 +148,16 @@
 				84A19CCF29BC2C8500FF6D79 /* ImagesViewController.swift */,
 			);
 			path = Item;
+			sourceTree = "<group>";
+		};
+		845F1CF629C6151200CDCBAD /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				845F1CF429C58AC900CDCBAD /* ImageOptionsViewController.swift */,
+				84A19CCB29BC2C8500FF6D79 /* ImageItemViewController.swift */,
+				84A19CCD29BC2C8500FF6D79 /* ImageItemViewController.xib */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		84A19C7B29BC2BD000FF6D79 = {
@@ -228,13 +237,12 @@
 		84A19CC929BC2C8500FF6D79 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				845F1CF629C6151200CDCBAD /* Images */,
 				845F1CF129C589A000CDCBAD /* Item */,
 				845F1CF029C5898E00CDCBAD /* ListOptions */,
 				84A19CD229BC2C8500FF6D79 /* Cell */,
 				84A19CCA29BC2C8500FF6D79 /* ChatViewController.swift */,
 				84A19CD029BC2C8500FF6D79 /* ChatViewController.xib */,
-				84A19CCB29BC2C8500FF6D79 /* ImageItemViewController.swift */,
-				84A19CCD29BC2C8500FF6D79 /* ImageItemViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
