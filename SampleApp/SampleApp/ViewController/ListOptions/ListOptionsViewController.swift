@@ -19,7 +19,7 @@ class ListOptionsViewController: UIViewController {
         tableView.reloadData()
     }
 
-    func getViewController(indexPath: IndexPath) -> UIViewController {
+    func getViewController(at indexPath: IndexPath) -> UIViewController {
         .init()
     }
 }
@@ -45,7 +45,7 @@ extension ListOptionsViewController: UITableViewDataSource {
 
 extension ListOptionsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = getViewController(indexPath: indexPath)
+        let viewController = getViewController(at: indexPath)
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

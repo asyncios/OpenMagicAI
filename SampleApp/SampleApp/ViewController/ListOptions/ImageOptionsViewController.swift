@@ -23,7 +23,7 @@ final class ImageOptionsViewController: ListOptionsViewController {
         navigationItem.title = "Image Options"
     }
 
-    override func getViewController(indexPath: IndexPath) -> UIViewController {
+    override func getViewController(at indexPath: IndexPath) -> UIViewController {
         ImagesViewController()
     }
 }
