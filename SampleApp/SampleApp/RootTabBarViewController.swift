@@ -16,8 +16,8 @@ final class RootTabBarViewController: UITabBarController {
         return viewController
     }()
 
-    private lazy var imagesViewController: ImagesViewController = {
-        let viewController = ImagesViewController()
+    private lazy var imagesViewController: UIViewController = {
+        let viewController = UINavigationController(rootViewController: ImageOptionsViewController())
         viewController.tabBarItem.title = "Images"
         viewController.tabBarItem.image = .init(systemName: "photo")
         return viewController

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		84130D7329C0B39A00BE325B /* EmbeddingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84130D7229C0B39A00BE325B /* EmbeddingsViewController.swift */; };
 		84130D7629C0B45C00BE325B /* OpenMagicAI in Frameworks */ = {isa = PBXBuildFile; productRef = 84130D7529C0B45C00BE325B /* OpenMagicAI */; };
+		845F1CF529C58AC900CDCBAD /* ImageOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845F1CF429C58AC900CDCBAD /* ImageOptionsViewController.swift */; };
+		848B4E1D29C587A20026D3E2 /* ListOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848B4E1B29C587A20026D3E2 /* ListOptionsViewController.swift */; };
+		848B4E1E29C587A20026D3E2 /* ListOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848B4E1C29C587A20026D3E2 /* ListOptionsViewController.xib */; };
 		84A19C8829BC2BD000FF6D79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A19C8729BC2BD000FF6D79 /* AppDelegate.swift */; };
 		84A19C8A29BC2BD000FF6D79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A19C8929BC2BD000FF6D79 /* SceneDelegate.swift */; };
 		84A19C8F29BC2BD000FF6D79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A19C8D29BC2BD000FF6D79 /* Main.storyboard */; };
@@ -60,6 +63,9 @@
 /* Begin PBXFileReference section */
 		84130D7229C0B39A00BE325B /* EmbeddingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddingsViewController.swift; sourceTree = "<group>"; };
 		84130D7429C0B3C800BE325B /* OpenMagicAI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OpenMagicAI; path = ..; sourceTree = "<group>"; };
+		845F1CF429C58AC900CDCBAD /* ImageOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageOptionsViewController.swift; sourceTree = "<group>"; };
+		848B4E1B29C587A20026D3E2 /* ListOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOptionsViewController.swift; sourceTree = "<group>"; };
+		848B4E1C29C587A20026D3E2 /* ListOptionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListOptionsViewController.xib; sourceTree = "<group>"; };
 		84A19C8429BC2BD000FF6D79 /* SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A19C8729BC2BD000FF6D79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84A19C8929BC2BD000FF6D79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +127,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		845F1CF029C5898E00CDCBAD /* ListOptions */ = {
+			isa = PBXGroup;
+			children = (
+				845F1CF429C58AC900CDCBAD /* ImageOptionsViewController.swift */,
+				848B4E1B29C587A20026D3E2 /* ListOptionsViewController.swift */,
+				848B4E1C29C587A20026D3E2 /* ListOptionsViewController.xib */,
+			);
+			path = ListOptions;
+			sourceTree = "<group>";
+		};
+		845F1CF129C589A000CDCBAD /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				84A19CCE29BC2C8500FF6D79 /* CompletionsViewController.swift */,
+				84A19CD129BC2C8500FF6D79 /* EditsViewController.swift */,
+				84130D7229C0B39A00BE325B /* EmbeddingsViewController.swift */,
+				84A19CD929BC2C8500FF6D79 /* ItemViewController.swift */,
+				84A19CD829BC2C8500FF6D79 /* ItemViewController.xib */,
+				84A19CCC29BC2C8500FF6D79 /* ModelsViewController.swift */,
+				84A19CCF29BC2C8500FF6D79 /* ImagesViewController.swift */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
 		84A19C7B29BC2BD000FF6D79 = {
 			isa = PBXGroup;
 			children = (
@@ -198,18 +228,13 @@
 		84A19CC929BC2C8500FF6D79 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				845F1CF129C589A000CDCBAD /* Item */,
+				845F1CF029C5898E00CDCBAD /* ListOptions */,
 				84A19CD229BC2C8500FF6D79 /* Cell */,
 				84A19CCA29BC2C8500FF6D79 /* ChatViewController.swift */,
 				84A19CD029BC2C8500FF6D79 /* ChatViewController.xib */,
-				84A19CCE29BC2C8500FF6D79 /* CompletionsViewController.swift */,
-				84A19CD129BC2C8500FF6D79 /* EditsViewController.swift */,
-				84130D7229C0B39A00BE325B /* EmbeddingsViewController.swift */,
 				84A19CCB29BC2C8500FF6D79 /* ImageItemViewController.swift */,
 				84A19CCD29BC2C8500FF6D79 /* ImageItemViewController.xib */,
-				84A19CCF29BC2C8500FF6D79 /* ImagesViewController.swift */,
-				84A19CD929BC2C8500FF6D79 /* ItemViewController.swift */,
-				84A19CD829BC2C8500FF6D79 /* ItemViewController.xib */,
-				84A19CCC29BC2C8500FF6D79 /* ModelsViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -354,6 +379,7 @@
 				84A19C9129BC2BD000FF6D79 /* Assets.xcassets in Resources */,
 				84A19CE529BC2C8500FF6D79 /* ChatViewController.xib in Resources */,
 				84A19CEA29BC2C8500FF6D79 /* AIChatTableViewCell.xib in Resources */,
+				848B4E1E29C587A20026D3E2 /* ListOptionsViewController.xib in Resources */,
 				84A19CEC29BC2C8500FF6D79 /* ItemViewController.xib in Resources */,
 				84A19CE729BC2C8500FF6D79 /* UserChatTableViewCell.xib in Resources */,
 				84A19C8F29BC2BD000FF6D79 /* Main.storyboard in Resources */,
@@ -388,6 +414,7 @@
 				84A19CE129BC2C8500FF6D79 /* ModelsViewController.swift in Sources */,
 				84A19CE429BC2C8500FF6D79 /* ImagesViewController.swift in Sources */,
 				84A19CC629BC2C6F00FF6D79 /* UIImageView.swift in Sources */,
+				845F1CF529C58AC900CDCBAD /* ImageOptionsViewController.swift in Sources */,
 				84A19C8829BC2BD000FF6D79 /* AppDelegate.swift in Sources */,
 				84A19CDF29BC2C8500FF6D79 /* ChatViewController.swift in Sources */,
 				84A19CEE29BC2C8500FF6D79 /* Loadable.swift in Sources */,
@@ -399,6 +426,7 @@
 				84130D7329C0B39A00BE325B /* EmbeddingsViewController.swift in Sources */,
 				84A19CC529BC2C6F00FF6D79 /* UIViewController.swift in Sources */,
 				84A19C8A29BC2BD000FF6D79 /* SceneDelegate.swift in Sources */,
+				848B4E1D29C587A20026D3E2 /* ListOptionsViewController.swift in Sources */,
 				84A19CEF29BC2C8500FF6D79 /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
