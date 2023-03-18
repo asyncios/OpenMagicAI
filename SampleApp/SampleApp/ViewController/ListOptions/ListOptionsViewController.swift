@@ -37,6 +37,7 @@ extension ListOptionsViewController: UITableViewDataSource {
     ) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.selectionStyle = .none
+        cell.accessoryType = .disclosureIndicator
         cell.textLabel?.text = rows[indexPath.row]
         return cell
     }
