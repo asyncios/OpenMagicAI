@@ -24,7 +24,7 @@ public final class ImagesApi: ApiQueryable {
     public func createImage(
         prompt: String,
         n: Int = 1,
-        size: ImageSize = ImageSize.defaultSize,
+        size: ImageSize = .large,
         responseFormat: ImagesResponseFormat? = .url,
         user: String? = nil,
         onCompletion: @escaping (Result<ImagesCreated, Error>) -> Void
@@ -48,7 +48,7 @@ public final class ImagesApi: ApiQueryable {
         mask: Data?,
         prompt: String,
         n: Int = 1,
-        size: ImageSize = ImageSize.defaultSize,
+        size: ImageSize = .large,
         responseFormat: ImagesResponseFormat? = .url,
         onCompletion: @escaping (Result<ImagesCreated, Error>) -> Void
     ) {
@@ -73,7 +73,7 @@ public final class ImagesApi: ApiQueryable {
         }
         formDataRequest.addTextField(named: "prompt", value: prompt)
         formDataRequest.addTextField(named: "n", value: String(n))
-        formDataRequest.addTextField(named: "size", value: size.stringValue)
+        formDataRequest.addTextField(named: "size", value: size.rawValue)
         multiformDataTask(urlSession: urlSession, apiKey: apiKey, formData: formDataRequest, onCompletion: onCompletion)
     }
 }

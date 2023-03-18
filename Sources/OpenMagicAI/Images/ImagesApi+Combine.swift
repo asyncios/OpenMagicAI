@@ -20,7 +20,7 @@ extension ImagesApi {
     public func createImageFuture(
         prompt: String,
         n: Int = 1,
-        size: ImageSize = .init(width: 256, height: 256),
+        size: ImageSize = .large,
         responseFormat: ImagesResponseFormat? = .url,
         user: String? = nil
     ) -> Future<ImagesCreated, Error> {

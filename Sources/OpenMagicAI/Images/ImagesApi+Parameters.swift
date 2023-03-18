@@ -24,7 +24,7 @@ extension ImagesApi {
         ) {
             self.prompt = prompt
             self.n = n
-            self.size = "\(size.width)x\(size.height)"
+            self.size = size.rawValue
             self.responseFormat = responseFormat
             self.user = user
         }

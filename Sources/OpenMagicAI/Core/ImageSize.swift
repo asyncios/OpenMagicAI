@@ -7,17 +7,8 @@
 
 import Foundation
 
-public struct ImageSize {
-    public let width: Int
-    public let height: Int
-    public init(width: Int, height: Int) {
-        self.width = width
-        self.height = height
-    }
-    
-    public static let defaultSize = ImageSize(width: 1024, height: 1024)
-    
-    var stringValue: String {
-        "\(width)x\(height)"
-    }
+public enum ImageSize: String {
+    case large = "1024x1024"
+    case medium = "512x512"
+    case small = "256x256"
 }
