@@ -15,7 +15,7 @@ final class ImageEditViewController: UIViewController, Loadable {
     @IBOutlet private weak var promptTextField: UITextField!
     private var masks = ["mask1", "mask2", "mask3", "mask4", "mask5"]
 
-    private var image: Data?
+    private var image: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +32,7 @@ final class ImageEditViewController: UIViewController, Loadable {
     @IBAction func createImageEditOnTouch(_ sender: Any) {
         guard
             let image = image,
+            let imageData = image.pngData(),
             let prompt = promptTextField.text,
             !prompt.isEmpty
         else {
@@ -39,12 +40,13 @@ final class ImageEditViewController: UIViewController, Loadable {
         }
         var mask: Data?
         if let indexPath = masksCollectionView.indexPathsForSelectedItems?.first {
-            let image = UIImage(named: masks[indexPath.row])
-            mask = image?.pngData()
+            var maskImage = UIImage(named: masks[indexPath.row])
+            maskImage = resizeImage(image: maskImage!, targetSize: image.size)
+            mask = maskImage?.pngData()
         }
         showLoadingView()
         openMagicAI.images.createImageEdit(
-            image: image,
+            image: imageData,
             mask: mask,
             prompt: prompt
         ) { [weak self] result in
@@ -71,6 +73,57 @@ private extension ImageEditViewController {
         masksCollectionView.dataSource = self
         masksCollectionView.delegate = self
         masksCollectionView.reloadData()
+    }
+    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage? {
+        let size = image.size
+        
+        let widthRatio  = targetSize.width  / size.width
+        let heightRatio = targetSize.height / size.height
+        
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio, height: size.height * widthRatio)
+        }
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(origin: .zero, size: newSize)
+        
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+    func cropImageToSquare(image: UIImage) -> UIImage? {
+        var imageHeight = image.size.height
+        var imageWidth = image.size.width
+
+        if imageHeight > imageWidth {
+            imageHeight = imageWidth
+        }
+        else {
+            imageWidth = imageHeight
+        }
+
+        let size = CGSize(width: imageWidth, height: imageHeight)
+
+        let refWidth : CGFloat = CGFloat(image.cgImage!.width)
+        let refHeight : CGFloat = CGFloat(image.cgImage!.height)
+
+        let x = (refWidth - size.width) / 2
+        let y = (refHeight - size.height) / 2
+
+        let cropRect = CGRectMake(x, y, size.height, size.width)
+        if let imageRef = image.cgImage!.cropping(to: cropRect) {
+            return UIImage(cgImage: imageRef, scale: 0, orientation: image.imageOrientation)
+        }
+
+       return nil
     }
 }
 
@@ -104,12 +157,16 @@ extension ImageEditViewController: UICollectionViewDelegateFlowLayout {
 
 extension ImageEditViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let pickerImage = info[.editedImage] as? UIImage else { return }
+        guard let pickerImage = info[.editedImage] as? UIImage,
+              let croppedImage = cropImageToSquare(image: pickerImage)
+        else {
+            return
+        }
 
         let imageName = UUID().uuidString
 
-        if let jpegData = pickerImage.jpegData(compressionQuality: 0.8) {
-            image = jpegData
+        if let jpegData = croppedImage.jpegData(compressionQuality: 0.2) {
+            image = UIImage(data: jpegData)
         }
         imageTextField.placeholder = imageName
         dismiss(animated: true)
