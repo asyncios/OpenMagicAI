@@ -24,6 +24,13 @@ final class ImageOptionsViewController: ListOptionsViewController {
     }
 
     override func getViewController(at indexPath: IndexPath) -> UIViewController {
-        ImagesViewController()
+        switch indexPath.row {
+        case 0:
+            return ImagesViewController()
+        case 1:
+            return ImageEditViewController()
+        default:
+            return .init()
+        }
     }
 }

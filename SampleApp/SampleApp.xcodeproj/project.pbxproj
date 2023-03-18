@@ -10,6 +10,10 @@
 		84130D7329C0B39A00BE325B /* EmbeddingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84130D7229C0B39A00BE325B /* EmbeddingsViewController.swift */; };
 		84130D7629C0B45C00BE325B /* OpenMagicAI in Frameworks */ = {isa = PBXBuildFile; productRef = 84130D7529C0B45C00BE325B /* OpenMagicAI */; };
 		845F1CF529C58AC900CDCBAD /* ImageOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845F1CF429C58AC900CDCBAD /* ImageOptionsViewController.swift */; };
+		845F1CF929C6156400CDCBAD /* ImageEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845F1CF729C6156400CDCBAD /* ImageEditViewController.swift */; };
+		845F1CFA29C6156400CDCBAD /* ImageEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845F1CF829C6156400CDCBAD /* ImageEditViewController.xib */; };
+		845F1CFD29C66AE500CDCBAD /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845F1CFB29C66AE500CDCBAD /* ImageCollectionViewCell.swift */; };
+		845F1CFE29C66AE500CDCBAD /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845F1CFC29C66AE500CDCBAD /* ImageCollectionViewCell.xib */; };
 		848B4E1D29C587A20026D3E2 /* ListOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848B4E1B29C587A20026D3E2 /* ListOptionsViewController.swift */; };
 		848B4E1E29C587A20026D3E2 /* ListOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848B4E1C29C587A20026D3E2 /* ListOptionsViewController.xib */; };
 		84A19C8829BC2BD000FF6D79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A19C8729BC2BD000FF6D79 /* AppDelegate.swift */; };
@@ -64,6 +68,10 @@
 		84130D7229C0B39A00BE325B /* EmbeddingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddingsViewController.swift; sourceTree = "<group>"; };
 		84130D7429C0B3C800BE325B /* OpenMagicAI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OpenMagicAI; path = ..; sourceTree = "<group>"; };
 		845F1CF429C58AC900CDCBAD /* ImageOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageOptionsViewController.swift; sourceTree = "<group>"; };
+		845F1CF729C6156400CDCBAD /* ImageEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditViewController.swift; sourceTree = "<group>"; };
+		845F1CF829C6156400CDCBAD /* ImageEditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageEditViewController.xib; sourceTree = "<group>"; };
+		845F1CFB29C66AE500CDCBAD /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		845F1CFC29C66AE500CDCBAD /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		848B4E1B29C587A20026D3E2 /* ListOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOptionsViewController.swift; sourceTree = "<group>"; };
 		848B4E1C29C587A20026D3E2 /* ListOptionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListOptionsViewController.xib; sourceTree = "<group>"; };
 		84A19C8429BC2BD000FF6D79 /* SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,7 +153,6 @@
 				84A19CD929BC2C8500FF6D79 /* ItemViewController.swift */,
 				84A19CD829BC2C8500FF6D79 /* ItemViewController.xib */,
 				84A19CCC29BC2C8500FF6D79 /* ModelsViewController.swift */,
-				84A19CCF29BC2C8500FF6D79 /* ImagesViewController.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -153,9 +160,12 @@
 		845F1CF629C6151200CDCBAD /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				84A19CCF29BC2C8500FF6D79 /* ImagesViewController.swift */,
 				845F1CF429C58AC900CDCBAD /* ImageOptionsViewController.swift */,
 				84A19CCB29BC2C8500FF6D79 /* ImageItemViewController.swift */,
 				84A19CCD29BC2C8500FF6D79 /* ImageItemViewController.xib */,
+				845F1CF729C6156400CDCBAD /* ImageEditViewController.swift */,
+				845F1CF829C6156400CDCBAD /* ImageEditViewController.xib */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -255,6 +265,8 @@
 				84A19CD529BC2C8500FF6D79 /* AIChatTableViewCell.swift */,
 				84A19CD629BC2C8500FF6D79 /* AIChatTableViewCell.xib */,
 				84A19CD729BC2C8500FF6D79 /* BaseChatTableViewCell.swift */,
+				845F1CFB29C66AE500CDCBAD /* ImageCollectionViewCell.swift */,
+				845F1CFC29C66AE500CDCBAD /* ImageCollectionViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -382,7 +394,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				845F1CFA29C6156400CDCBAD /* ImageEditViewController.xib in Resources */,
 				84A19C9429BC2BD000FF6D79 /* LaunchScreen.storyboard in Resources */,
+				845F1CFE29C66AE500CDCBAD /* ImageCollectionViewCell.xib in Resources */,
 				84A19CE229BC2C8500FF6D79 /* ImageItemViewController.xib in Resources */,
 				84A19C9129BC2BD000FF6D79 /* Assets.xcassets in Resources */,
 				84A19CE529BC2C8500FF6D79 /* ChatViewController.xib in Resources */,
@@ -419,6 +433,7 @@
 				84A19CED29BC2C8500FF6D79 /* ItemViewController.swift in Sources */,
 				84A19CF029BC2C8500FF6D79 /* RootTabBarViewController.swift in Sources */,
 				84A19CE029BC2C8500FF6D79 /* ImageItemViewController.swift in Sources */,
+				845F1CF929C6156400CDCBAD /* ImageEditViewController.swift in Sources */,
 				84A19CE129BC2C8500FF6D79 /* ModelsViewController.swift in Sources */,
 				84A19CE429BC2C8500FF6D79 /* ImagesViewController.swift in Sources */,
 				84A19CC629BC2C6F00FF6D79 /* UIImageView.swift in Sources */,
@@ -430,6 +445,7 @@
 				84A19CE329BC2C8500FF6D79 /* CompletionsViewController.swift in Sources */,
 				84A19CE629BC2C8500FF6D79 /* EditsViewController.swift in Sources */,
 				84A19CE829BC2C8500FF6D79 /* UserChatTableViewCell.swift in Sources */,
+				845F1CFD29C66AE500CDCBAD /* ImageCollectionViewCell.swift in Sources */,
 				84A19CDE29BC2C8500FF6D79 /* ChatMessage.swift in Sources */,
 				84130D7329C0B39A00BE325B /* EmbeddingsViewController.swift in Sources */,
 				84A19CC529BC2C6F00FF6D79 /* UIViewController.swift in Sources */,
