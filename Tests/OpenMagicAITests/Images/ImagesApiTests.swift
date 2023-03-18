@@ -47,8 +47,8 @@ final class ImagesApiTests: XCTestCase {
         let path = EndPoint.images(.createImageEdit).url.path
         let mock = try Mocks.createImage.getMock(type: ImagesCreated.self)
         MockURLProtocol.mockData[path] = mock.1
-        let string = "test"
-        let data = string.data(using: .utf8)!
+        let url = Bundle.module.url(forResource: "image", withExtension: "png")!
+        let data = try Data(contentsOf: url)
         let expecation: XCTestExpectation = .init(description: "testCreateImageEdit")
         // Case
         sut.createImageEdit(image: data, mask: data, prompt: "test") { result in
@@ -80,8 +80,8 @@ extension ImagesApiTests {
         let path = EndPoint.images(.createImageEdit).url.path
         let mock = try Mocks.createImage.getMock(type: ImagesCreated.self)
         MockURLProtocol.mockData[path] = mock.1
-        let string = "test"
-        let data = string.data(using: .utf8)!
+        let url = Bundle.module.url(forResource: "image", withExtension: "png")!
+        let data = try Data(contentsOf: url)
         // Case
         let result = try await sut.createImageEdit(image: data, mask: data, prompt: "test")
         // When
@@ -116,8 +116,8 @@ extension ImagesApiTests {
         let path = EndPoint.images(.createImageEdit).url.path
         let mock = try Mocks.createImage.getMock(type: ImagesCreated.self)
         MockURLProtocol.mockData[path] = mock.1
-        let string = "test"
-        let data = string.data(using: .utf8)!
+        let url = Bundle.module.url(forResource: "image", withExtension: "png")!
+        let data = try Data(contentsOf: url)
         let expectation: XCTestExpectation = .init(description: "testCreateImageEditFuture")
         var result: ImagesCreated?
         // Case

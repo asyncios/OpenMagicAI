@@ -24,6 +24,9 @@ let package = Package(
         .testTarget(
             name: "OpenMagicAITests",
             dependencies: ["OpenMagicAI"],
-            exclude: ["Mocks/"])
+            exclude: ["Mocks/"],
+            resources: [
+                .copy("Resources/image.png")
+            ])
     ]
 )
