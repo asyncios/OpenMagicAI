@@ -17,7 +17,7 @@ extension ImagesApi {
     ///   - prompt: String
     ///
     /// - Returns: Future ``ImagesCreated``
-    public func createImageFuture(
+    public func createImage(
         prompt: String,
         n: Int = 1,
         size: ImageSize = .large,

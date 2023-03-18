@@ -41,7 +41,25 @@ final class ImagesApiTests: XCTestCase {
         // When
         wait(for: [expecation], timeout: 1)
     }
-    
+
+    func testCreateImageEdit() throws {
+        // Given
+        let path = EndPoint.images(.createImageEdit).url.path
+        let mock = try Mocks.createImage.getMock(type: ImagesCreated.self)
+        MockURLProtocol.mockData[path] = mock.1
+        let string = "test"
+        let data = string.data(using: .utf8)!
+        let expecation: XCTestExpectation = .init(description: "testCreateImageEdit")
+        // Case
+        sut.createImageEdit(image: data, mask: data, prompt: "test") { result in
+            if case .success(let success) = result,
+               success.created == mock.0.created {
+                expecation.fulfill()
+            }
+        }
+        // When
+        wait(for: [expecation], timeout: 1)
+    }
 }
 
 // MARK: Async
@@ -53,6 +71,19 @@ extension ImagesApiTests {
         MockURLProtocol.mockData[path] = mock.1
         // Case
         let result = try await sut.createImage(prompt: "test")
+        // When
+        XCTAssertEqual(mock.0.created, result.created)
+    }
+
+    func testCreateImageEditAsync() async throws {
+        // Given
+        let path = EndPoint.images(.createImageEdit).url.path
+        let mock = try Mocks.createImage.getMock(type: ImagesCreated.self)
+        MockURLProtocol.mockData[path] = mock.1
+        let string = "test"
+        let data = string.data(using: .utf8)!
+        // Case
+        let result = try await sut.createImageEdit(image: data, mask: data, prompt: "test")
         // When
         XCTAssertEqual(mock.0.created, result.created)
     }
@@ -68,7 +99,29 @@ extension ImagesApiTests {
         let expectation: XCTestExpectation = .init(description: "testCreateImageFurure")
         var result: ImagesCreated?
         // Case
-        sut.createImageFuture(prompt: "test").sink { result in
+        sut.createImage(prompt: "test").sink { result in
+            if case .finished = result {
+                expectation.fulfill()
+            }
+        } receiveValue: { value in
+            result = value
+        }.store(in: &cancellables)
+        // Then
+        wait(for: [expectation], timeout: 1)
+        XCTAssertEqual(mock.0.created, result?.created)
+    }
+
+    func testCreateImageEditFuture() async throws {
+        // Given
+        let path = EndPoint.images(.createImageEdit).url.path
+        let mock = try Mocks.createImage.getMock(type: ImagesCreated.self)
+        MockURLProtocol.mockData[path] = mock.1
+        let string = "test"
+        let data = string.data(using: .utf8)!
+        let expectation: XCTestExpectation = .init(description: "testCreateImageEditFuture")
+        var result: ImagesCreated?
+        // Case
+        sut.createImageEdit(image: data, mask: data, prompt: "test").sink { result in
             if case .finished = result {
                 expectation.fulfill()
             }
