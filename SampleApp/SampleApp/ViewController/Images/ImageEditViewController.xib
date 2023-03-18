@@ -10,7 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImageEditViewController" customModule="SampleApp" customModuleProvider="target">
             <connections>
+                <outlet property="imageTextField" destination="71m-Gz-vHr" id="HH9-jk-3bA"/>
                 <outlet property="masksCollectionView" destination="W3F-qd-3D5" id="WzD-U2-acu"/>
+                <outlet property="promptTextField" destination="fXf-Me-Xab" id="W0C-bg-DAw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,17 +24,23 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="JDV-aQ-zzK">
                     <rect key="frame" x="0.0" y="59" width="375" height="292"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1bt-E1-a6d">
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1bt-E1-a6d">
                             <rect key="frame" x="20" y="20.000000000000004" width="335" height="34.333333333333343"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Image" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="71m-Gz-vHr">
-                                    <rect key="frame" x="0.0" y="0.0" width="263" height="34.333333333333336"/>
+                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Image" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="71m-Gz-vHr">
+                                    <rect key="frame" x="0.0" y="0.0" width="255" height="34.333333333333336"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lHU-dp-yWD">
                                     <rect key="frame" x="263" y="0.0" width="72" height="34.333333333333336"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="Select"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="72" id="uG1-2v-Lcj"/>
+                                    </constraints>
+                                    <buttonConfiguration key="configuration" style="tinted" title="Select"/>
+                                    <connections>
+                                        <action selector="selectImageOnTouch:" destination="-1" eventType="touchUpInside" id="GbD-fS-dpN"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -69,6 +77,9 @@
                             <rect key="frame" x="20" y="237.66666666666669" width="335" height="34.333333333333314"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="filled" title="Create Image Edit"/>
+                            <connections>
+                                <action selector="createImageEditOnTouch:" destination="-1" eventType="touchUpInside" id="uOb-Mg-y8B"/>
+                            </connections>
                         </button>
                     </subviews>
                     <edgeInsets key="layoutMargins" top="20" left="20" bottom="20" right="20"/>
